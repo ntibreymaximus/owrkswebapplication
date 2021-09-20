@@ -1,5 +1,70 @@
+.container {
+	display: flex;
+	align-items: stretch;
+}
+.navbar {
+	width: 25%;
+}
+.navcontent {
+	width: 80%;
+	margin-top: 3%;
+	margin-left: 10px;
+	background: #000;
+}
 .sidenavigation {
-	height: 100vh;
-	background-color: white;
+	height: 100%;
+	width: 20%;
+	background-color: #1f5a27;
+	color: white;
+	padding-top: 25px;
+	padding-left: 75px;
+	padding-right: 75px;
+}
+
+.sidebarheader {
+	text-align: left;
+	font-family: "Montserrat";
+}
+
+.sidebarheaderh3 {
+	font-weight: 500;
+	margin-bottom: 0px;
+	letter-spacing: 3px;
+}
+
+.sidebarheaderh1 {
+	font-weight: bold;
+	font-size: 50px;
 	margin-top: 0px;
+	letter-spacing: 5px;
+}
+
+.sidenavigationbody {
+	margin-top: 100px;
+	font-family: "Montserrat";
+	font-weight: 40;
+	font-size: 20px;
+}
+
+.navitem {
+	margin-bottom: 25px;
+	font-weight: 500;
+	text-align: left;
+	letter-spacing: 2px;
+	list-style-type: none;
+}
+.logoutbutton {
+	background: #3eb54e;
+	border: none;
+	color: white;
+	text-align: center;
+	width: 100%;
+	font-weight: 400;
+	font-size: 20px;
+	margin-top: 50px;
+	padding: 5px 15px;
+	border-radius: 5px;
+	letter-spacing: 1px;
+	cursor: pointer;
+	font-family: "Montserrat";
 }
