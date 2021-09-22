@@ -14,7 +14,7 @@ export default class Routes extends Component {
                         <Switch>
                         <Route path="/" exact component={Login}/>
                         <Route path="/dashboard/home" component={Dashboard}/>
-                    </Switch>
+                        </Switch>
                     </AuthProvider>
                     
                     

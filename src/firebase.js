@@ -1,7 +1,7 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp  } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
  import {getAuth} from "firebase/auth";
-import {getFirestore} from "firebase/firestore";
+import {getFirestore , increment} from "firebase/firestore";
  import {getStorage} from "firebase/storage";
 
 const fbapp = initializeApp({
@@ -54,16 +54,5 @@ export const firestore = getFirestore();
 
 export const db = firestore;
 
-export const increment = firestore.FieldValue.increment(1);
-export const decrement = firestore.FieldValue.increment(-1);
-export const arrayAdd =firestore.FieldValue; 
-
-export const AddArrayField = (collection, field, NewId, destinationID) => {
-  const mytable = firestore.collection(collection);
-
-  mytable.doc(destinationID).update({
-    [field]: firestore.FieldValue.arrayUnion(NewId),
-  });
-};
 
 export { storage, fbapp, auth as default };
