@@ -1,10 +1,7 @@
-import { initializeApp  } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
- import {getAuth} from "firebase/auth";
-import {getFirestore , increment} from "firebase/firestore";
- import {getStorage} from "firebase/storage";
+import firebase from "firebase";
 
-const fbapp = initializeApp({
+
+const fbapp = firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
@@ -16,15 +13,15 @@ const fbapp = initializeApp({
 
 
 
- const storage = getStorage;
+const storage = firebase.storage();
 
 // storage ref for uploads
-// const storageRef = getStorage.ref();
+const storageRef = firebase.storage().ref();
 
-// export { storageRef };
+export { storageRef };
 
 // auth
-export const auth = getAuth();
+export const auth = fbapp.auth();
 
 // verify tutor function
 // export const verifyTutor = (data) => {
@@ -38,11 +35,11 @@ export const auth = getAuth();
 // };
 
 // firestore
-export const firestore = getFirestore();
+export const firestore = fbapp.firestore();
 
 //timestamp
 // export const timestamp = firebase.firestore.FieldValue.serverTimestamp;
-// export const timestamp = firestore.FieldValue.serverTimestamp;
+export const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 //push to array , takes the Id of the primary collection and inserts into parent or child collection
 //eg. after uploading a new course you can the course id to ther tutors array of courses.
@@ -52,7 +49,18 @@ export const firestore = getFirestore();
 //NewId = id to insert
 //destinationID = id of table to insert into
 
-export const db = firestore;
+export const db = firebase.firestore();
 
+export const increment = firebase.firestore.FieldValue.increment(1);
+export const decrement = firebase.firestore.FieldValue.increment(-1);
+export const arrayAdd =firebase.firestore.FieldValue; 
+
+export const AddArrayField = (collection, field, NewId, destinationID) => {
+  const mytable = firestore.collection(collection);
+
+  mytable.doc(destinationID).update({
+    [field]: firebase.firestore.FieldValue.arrayUnion(NewId),
+  });
+};
 
 export { storage, fbapp, auth as default };

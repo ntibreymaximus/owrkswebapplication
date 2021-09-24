@@ -26,7 +26,7 @@ export default function Login  (){
         console.log("completed login, going to verify")
 
       //               await verifyUser();
-      history.push("/dashboard");
+      history.push("/dashboard/home");
     } catch (error) {
       setError(error.message);
     }
@@ -44,6 +44,9 @@ export default function Login  (){
                       <h2 className="loginform-header">
                           Admin Login  
                       </h2>
+                      <div className="alert-danger">
+                        {error && error}
+                      </div>
                     <div className="form-group">
                       <label htmlFor="username">Username</label>
                       <div className="forminputcontainer">
@@ -62,7 +65,7 @@ export default function Login  (){
                       </div>
                       <div className="forminputcontainer">
                         <Link to='/dashboard/home'></Link>
-                          <button type="button" 
+                          <button type="submit" 
                           disabled={loading}
 
                           className="btn btn-primary formbutton">

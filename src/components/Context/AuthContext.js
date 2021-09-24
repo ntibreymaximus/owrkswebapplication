@@ -9,7 +9,7 @@ export function useAuth() {
 export function AuthProvider ({children}) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
-    const db = firestore
+    const db = fbapp.firestore()
     const [userID, setuserID] = useState()
 
     async function getUser(params) {
