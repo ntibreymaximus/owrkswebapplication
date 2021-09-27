@@ -23,7 +23,7 @@
 
 .sidebarheader {
   text-align: left;
-  font-family: "Nunito";
+  font-family: "Montserrat";
 }
 
 .sidebarheaderh3 {
@@ -41,7 +41,7 @@
 
 .sidenavigationbody {
   margin-top: 50px;
-  font-family: "Nunito";
+  font-family: "Montserrat";
   font-weight: 40;
   font-size: 20px;
 }
@@ -59,14 +59,14 @@
   border: none;
   color: white;
   text-align: center;
-  width: 80%;
+  width: 100%;
   font-weight: 400;
   font-size: 20px;
   margin-top: 50px;
   padding: 5px 15px;
   letter-spacing: 1px;
   cursor: pointer;
-  font-family: "Nunito";
+  font-family: "Montserrat";
 }
 .navitem {
   border-left: 0.2em solid #3eb54e;

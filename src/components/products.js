@@ -43,7 +43,7 @@ export default class Products extends Component {
           <div class="container-fluid searchoptions">
             <form class="d-flex">
               <input
-                className="form-control forminput"
+                className="form-control searchforminput"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
