@@ -1,70 +1,85 @@
 .container {
-	display: flex;
-	align-items: stretch;
+  display: flex;
+  align-items: stretch;
 }
 .navbar {
-	width: 25%;
+  width: 25%;
 }
 .navcontent {
-	width: 80%;
-	margin-top: 3%;
-	margin-left: 10px;
-	background: #000;
+  width: 72%;
+  margin-top: 2%;
+  margin-left: 10px;
+  padding: 5%;
 }
 .sidenavigation {
-	height: 100%;
-	width: 20%;
-	background-color: #1f5a27;
-	color: white;
-	padding-top: 25px;
-	padding-left: 75px;
-	padding-right: 75px;
+  height: 100%;
+  width: 20%;
+  background-color: #1f5a27;
+  color: white;
+  padding-top: 25px;
+  padding-left: 75px;
+  padding-right: 75px;
 }
 
 .sidebarheader {
-	text-align: left;
-	font-family: "Montserrat";
+  text-align: left;
+  font-family: "Nunito";
 }
 
 .sidebarheaderh3 {
-	font-weight: 500;
-	margin-bottom: 0px;
-	letter-spacing: 3px;
+  font-weight: 500;
+  margin-bottom: 0px;
+  letter-spacing: 3px;
 }
 
 .sidebarheaderh1 {
-	font-weight: bold;
-	font-size: 50px;
-	margin-top: 0px;
-	letter-spacing: 5px;
+  font-weight: bold;
+  font-size: 50px;
+  margin-top: 0px;
+  letter-spacing: 5px;
 }
 
 .sidenavigationbody {
-	margin-top: 100px;
-	font-family: "Montserrat";
-	font-weight: 40;
-	font-size: 20px;
+  margin-top: 50px;
+  font-family: "Nunito";
+  font-weight: 40;
+  font-size: 20px;
 }
 
-.navitem {
-	margin-bottom: 25px;
-	font-weight: 500;
-	text-align: left;
-	letter-spacing: 2px;
-	list-style-type: none;
+.navlink {
+  font-weight: 500;
+  text-align: left;
+  list-style-type: none;
+  text-decoration: none;
+  color: white;
 }
+
 .logoutbutton {
-	background: #3eb54e;
-	border: none;
-	color: white;
-	text-align: center;
-	width: 100%;
-	font-weight: 400;
-	font-size: 20px;
-	margin-top: 50px;
-	padding: 5px 15px;
-	border-radius: 5px;
-	letter-spacing: 1px;
-	cursor: pointer;
-	font-family: "Montserrat";
+  background: #3eb54e;
+  border: none;
+  color: white;
+  text-align: center;
+  width: 80%;
+  font-weight: 400;
+  font-size: 20px;
+  margin-top: 50px;
+  padding: 5px 15px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  font-family: "Nunito";
+}
+.navitem {
+  border-left: 0.2em solid #3eb54e;
+  padding: 1em;
+}
+.navitem:hover {
+  color: #3eb54e;
+  border-left: 0.5em solid #3eb54e;
+}
+
+.navitemactive {
+  background-color: white;
+  color: #1f5a27;
+  border-left: 0.5em solid #3eb54e;
+  width: 70%;
 }

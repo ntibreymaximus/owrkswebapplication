@@ -1,18 +1,24 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { React, Component } from "react";
+import { Switch, Route } from "react-router";
 import Dashboard from "./dashboard";
+import Error404 from "./error404";
 import Login from "./login";
+import Products from "./products";
+import Suppliers from "./suppliers";
+import Transactions from "./transactions";
+import Users from "./users";
 export default class Routes extends Component {
-	render() {
-		return (
-			<div>
-				<Router>
-					<Switch>
-						<Route path='/' exact component={Login} />
-						<Route path='/dashboard/home' component={Dashboard} />
-					</Switch>
-				</Router>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/users" component={Users} />
+        <Route exact path="/products" component={Products} />
+        <Route exact path="/suppliers" component={Suppliers} />
+        <Route exact path="/transactions" component={Transactions} />
+        <Route path="*" component={Error404} />
+      </Switch>
+    );
+  }
 }

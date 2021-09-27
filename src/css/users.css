@@ -1,0 +1,61 @@
+.searchoptions {
+  margin-bottom: 5%;
+}
+.forminput {
+  width: 50%;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+}
+
+.searchbutton {
+  background: #3eb54e;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  font: 100px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-family: "Nunito";
+  padding: 0.8em;
+}
+
+.table {
+  color: black;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+td,
+th {
+  border: 1px solid black;
+  padding: 1.5em;
+}
+
+.addbutton {
+  background: #3eb54e;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  font: 100px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: 20px;
+  font-family: "Nunito";
+  padding: 0.8em;
+}
+
+.deletebutton {
+  background: white;
+  border: none;
+  color: #3eb54e;
+  text-align: center;
+  font-size: 12px;
+  font: 100px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-family: "Nunito";
+  padding: 0.8em;
+}

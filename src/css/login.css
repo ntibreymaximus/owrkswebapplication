@@ -1,57 +1,55 @@
 .login {
-	text-align: center;
-	position: relative;
-	margin-top: 100px;
-	font-family: "Montserrat";
-	color: white;
-	text-transform: uppercase;
-	margin-left: 25%;
-	margin-right: 25%;
+  text-align: center;
+  position: relative;
+  margin-top: 100px;
+  font-family: "Nunito";
+  color: white;
+  text-transform: uppercase;
+  margin-left: 25%;
+  margin-right: 25%;
 }
 .login-header {
-	font-weight: bolder;
-	text-align: center;
-	font-size: 100px;
-	margin-bottom: 0%;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 100px;
+  margin-bottom: 0%;
 }
 .loginform-header {
-	font-weight: 500;
-	font-size: 25px;
-	margin-top: 10px;
-	margin-bottom: 50px;
+  font-weight: 500;
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 .form-group {
-	text-align: left;
-	margin-left: 25%;
-	margin-right: 25%;
-	font-size: 15px;
-	letter-spacing: 2px;
+  text-align: left;
+  margin-left: 25%;
+  margin-right: 25%;
+  font-size: 15px;
+  letter-spacing: 2px;
 }
 .forminputcontainer {
-	margin-top: 5px;
-	margin-bottom: 20px;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 .forminput {
-	width: 100%;
-	padding: 10px 15px;
-	box-sizing: border-box;
-	border: none;
-	border-radius: 50px;
-	outline: none;
+  width: 100%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
 }
 .formbutton {
-	background: #3eb54e;
-	border: none;
-	color: white;
-	text-align: center;
-	width: 100%;
-	text-transform: uppercase;
-	font-weight: 500;
-	font-size: 20px;
-	font: 100px;
-	margin-top: 20px;
-	padding: 5px 15px;
-	border-radius: 50px;
-	letter-spacing: 2px;
-	cursor: pointer;
+  background: #3eb54e;
+  border: none;
+  color: white;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 20px;
+  font: 100px;
+  margin-top: 20px;
+  padding: 5px 15px;
+  letter-spacing: 2px;
+  cursor: pointer;
 }

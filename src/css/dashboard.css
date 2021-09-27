@@ -1,2 +1,10 @@
-.dashboard {
+.box {
+  width: 75%;
+  padding: 2em;
+  background: white;
+  margin: 5%;
+  color: #3eb54e;
+}
+.addbutton {
+  margin-left: 100px;
 }
