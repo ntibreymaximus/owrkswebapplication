@@ -1,7 +1,7 @@
 .searchoptions {
   margin-bottom: 5%;
 }
-.forminput {
+.searchforminput {
   width: 50%;
   padding: 10px 15px;
   border: none;
@@ -17,7 +17,7 @@
   font: 100px;
   cursor: pointer;
   margin-right: 10px;
-  font-family: "Nunito";
+  font-family: "Montserrat";
   padding: 0.8em;
 }
 
@@ -43,7 +43,7 @@ th {
   cursor: pointer;
   margin-right: 10px;
   margin-left: 20px;
-  font-family: "Nunito";
+  font-family: "Montserrat";
   padding: 0.8em;
 }
 
@@ -56,6 +56,6 @@ th {
   font: 100px;
   cursor: pointer;
   margin-right: 10px;
-  font-family: "Nunito";
+  font-family: "Montserrat";
   padding: 0.8em;
 }

@@ -95,7 +95,7 @@ const Products =()=> {
           <div className="container-fluid searchoptions">
             <form className="d-flex">
               <input
-                className="form-control forminput"
+                className="form-control searchforminput"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
