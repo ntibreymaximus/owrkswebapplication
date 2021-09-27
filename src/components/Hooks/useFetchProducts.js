@@ -1,7 +1,7 @@
 import { useReducer, useEffect } from "react";
 
 //importing firebase and initializing db constant
-import { firestore } from "../../../firebase";
+import { firestore } from "../../firebase";
 
 const ACTIONS = {
   MAKE_REQUEST: "make-request",
@@ -12,15 +12,15 @@ const ACTIONS = {
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.MAKE_REQUEST:
-      return { loadingg: true, products: [] };
+      return { loading: true, products: [] };
 
     case ACTIONS.GET_DATA:
-      return { ...state, loadingg: false, products: action.payload.products };
+      return { ...state, loading: false, products: action.payload.products };
 
     case ACTIONS.ERROR:
       return {
         ...state,
-        loadingg: false,
+        loading: false,
         error: action.payload.error,
         products: [],
       };
