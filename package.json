@@ -1,0 +1,60 @@
+{
+  "name": "owrkswebapplication",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@carbon/icons-react": "^10.37.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "bootstrap": "5.1.1",
+    "browserslist": "^4.17.0",
+    "firebase": "^9.0.2",
+    "glob-parent": "^6.0.1",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.6.4",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
+    "react-router": "5.2.1",
+    "react-router-dom": "5.3.0",
+    "react-scripts": "^4.0.3",
+    "rsuite": "^4.10.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "guppy": {
+    "id": "b5b4f4e0-1823-11ec-bd64-bf4bee48a781",
+    "name": "owrkswebapplication",
+    "type": "create-react-app",
+    "icon": "./static/media/icon_pinkbird.087fb452.jpg",
+    "color": "#cc004a",
+    "createdAt": 1631930219361
+  },
+  "devDependencies": {
+    "prettier": "2.4.1"
+  }
+}
