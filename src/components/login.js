@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
 import "../css/login.css";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "./Context/AuthContext";
+import {useAuth} from "../components/Context/AuthContext";
+
+
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -10,8 +12,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const { login } = useAuth();
-
+const {login} = useAuth()
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -23,7 +24,7 @@ export default function Login() {
       console.log("completed login, going to verify");
 
       //               await verifyUser();
-      history.push("/dashboard/home");
+      history.push("/dashboard");
     } catch (error) {
       setError(error.message);
     }

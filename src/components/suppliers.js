@@ -1,10 +1,26 @@
-import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Sidebar, Sidenav, Nav, Button } from "rsuite";
 import AddModal from "../modal/addModal";
 import Dashboard from "./dashboard";
+import SupplierTable from "./helpers/Tables/SupplierTable";
+import useFetchSupplier from "./Hooks/useFetchSupplier";
 export default function Suppliers() {
   const [show, setShow] = useState(false);
+  const [supplierData, setSuppplierData] = useState([]);
+  const [myloading, setLoading] = useState(true);
+  const [myerror, setError] = useState("");
+  const FetchSupplier = async () => {
+    const { users, loading, error } = await useFetchSupplier();
+    setLoading(loading);
+    setSuppplierData(users);
+    setError(error);
+  };
+  FetchSupplier();
+  const results = (
+    <>
+      <SupplierTable supplier={supplierData} />
+    </>
+  );
   return (
     <Container className="container">
       <div className="navbar">
@@ -64,38 +80,7 @@ export default function Suppliers() {
             <Button className="deletebutton">Delete Supplier</Button>
           </form>
         </div>
-        <div>
-          <table class="table table-dark">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div>{!myloading ? results : "Loading ..."}</div>
       </div>
     </Container>
   );

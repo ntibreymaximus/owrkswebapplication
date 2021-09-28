@@ -1,11 +1,29 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Sidebar, Sidenav, Nav, Button } from "rsuite";
 import "../css/users.css";
 import AddModal from "../modal/addModal";
 import Dashboard from "./dashboard";
+import UserTable from "./helpers/Tables/UserTable";
+import useFetchUsers from "./Hooks/useFetchUsers";
 export default function Users() {
   const [show, setShow] = useState(false);
+  const [userData, setUserData] = useState([]);
+  const [myloading, setLoading] = useState(true);
+  const [myerror, setError] = useState("");
+  const FetchUsers = async () => {
+    const { users, loading, error } = await useFetchUsers();
+    setLoading(loading);
+    setUserData(users);
+    setError(error);
+  };
+  FetchUsers();
+
+  const results = (
+    <>
+      <UserTable users={userData} />
+    </>
+  );
   return (
     <Container className="container">
       <div className="navbar">
@@ -63,38 +81,7 @@ export default function Users() {
             <Button className="deletebutton">Delete User</Button>
           </form>
         </div>
-        <div>
-          <table class="table table-dark">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div>{!myloading ? results : "Loading ..."}</div>
       </div>
     </Container>
   );

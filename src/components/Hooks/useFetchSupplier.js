@@ -12,17 +12,17 @@ const ACTIONS = {
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.MAKE_REQUEST:
-      return { loading: true, products: [] };
+      return { loading: true, users: [] };
 
     case ACTIONS.GET_DATA:
-      return { ...state, loading: false, products: action.payload.products };
+      return { ...state, loading: false, users: action.payload.users };
 
     case ACTIONS.ERROR:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        products: [],
+        users: [],
       };
 
     default:
@@ -30,31 +30,31 @@ function reducer(state, action) {
   }
 }
 
-export default function useFetchProducts(params) {
-  const [state, dispatch] = useReducer(reducer, { products: [], loading: true });
+export default function useFetchSupplier(params) {
+  const [state, dispatch] = useReducer(reducer, { users: [], loading: true });
 
   useEffect(() => {
-    //retrieving all the products
-    let allproducts = [];
+    //retrieving all the users
+    let allusers = [];
     dispatch({ type: ACTIONS.MAKE_REQUEST });
-    async function getAllProducts() {
-      const products = firestore.collection("products");
+    async function getAllUsers() {
+      const users = firestore.collection("suppliers");
 
-      const snapshot = await products.get();
+      const snapshot = await users.get();
       if (snapshot.empty) {
         return;
       }
 
       snapshot.forEach((doc) => {
-        allproducts.push(doc.data());
+        allusers.push(doc.data());
         dispatch({
           type: ACTIONS.GET_DATA,
-          payload: { products: allproducts },
+          payload: { users: allusers },
         });
       });
     }
 
-    getAllProducts();
+    getAllUsers();
   }, [params]);
 
   return state;

@@ -12,26 +12,14 @@ const TableRow =({Data})=> {
         <tr>
         <td className="text-center text-muted">#{Data.id}</td>
         <td>
-            <div className="widget-content p-0">
-                <div className="widget-content-wrapper">
-                    <div className="widget-content-left mr-3">
-                        <div className="widget-content-left">
-                            <img width="40" className="rounded-circle" src={Data.img} alt="Avatar"/>
-                        </div>
-                    </div>
-                    <div className="widget-content-left flex2">
-                        <div className="widget-heading">{Data.name}</div>
-                    </div>
-                </div>
-            </div>
+            
+                    {Data.firstname} {Data.lastname}
+                  
         </td>
-        <td className="text-center">{Data.supplier} </td>
-        <td className="text-center">{Data.quantity} /{Data.quantity}</td>
+        <td className="text-center">{Data.email} </td>
+        
         <td className="text-center">
-            <Badge bg="warning" text="dark" className="bg-warning">{Data.leaseState ? 'Lease':'Sell'}</Badge>
-        </td>
-        <td className="text-center">
-            <Button as={Link} to={"/loadmanager/"+Data.id} type="button"  className="btn btn-primary btn-sm">Details</Button>
+            <Button as={Link} to={"/loadmanager/"+Data.id} type="button"  className="btn btn-primary btn-sm">View</Button>
         </td>
     </tr>
     );
@@ -54,8 +42,8 @@ const TableRow =({Data})=> {
 }
 
 
-const ProductTable =({products})=>{
-    const [Data,setData]= useState(products);
+const UserTable =({users})=>{
+    const [Data,setData]= useState(users);
 
     return(
                     
@@ -65,7 +53,7 @@ const ProductTable =({products})=>{
                     <Card className="main-card mb-3 card">
                         <Card.Header className="bg-white">
                             <Row>
-                            <Col sm={12} md={4}>Products</Col>
+                            <Col sm={12} md={4}>Users</Col>
                             {/* <ActionButtonRight className="col-sm-12 col-md-3 text-end ">
                                 <div role="group" className="btn-group-sm btn-group">
                                     <Button active className=" btn btn-info">pending </Button>
@@ -88,16 +76,14 @@ const ProductTable =({products})=>{
                                     <tr>
                                         <th className="text-center">#ID</th>
                                         <th>Name</th>
-                                        <th>Onwer</th>
-                                        <th className="text-center">Quantity / Instock</th>
-                                        <th className="text-center">Status</th>
+                                        <th className="text-center">Email</th>
                                         <th className="text-center">Actions</th>
 
                                     </tr>
                                 </thead>
                                 
                                 
-                                { Data && <TableBody Data={products}/>}
+                                { Data && <TableBody Data={users}/>}
                             </Table>
                         </div>
                         }
@@ -109,4 +95,4 @@ const ProductTable =({products})=>{
 }
 
 
-export default ProductTable;
+export default UserTable;

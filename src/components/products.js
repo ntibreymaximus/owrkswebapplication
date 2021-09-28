@@ -3,8 +3,28 @@ import { Link } from "react-router-dom";
 import { Container, Sidebar, Sidenav, Nav, Button } from "rsuite";
 import AddModal from "../modal/addModal";
 import Dashboard from "./dashboard";
+import ProductTable from "./helpers/Tables/ProductTable";
+import useFetchProducts from "./Hooks/useFetchProducts";
+
 export default function Transactions() {
   const [show, setShow] = useState(false);
+
+  const [productData, setProductData] = useState([]);
+  const [myloading, setLoading] = useState(true);
+  const [myerror, setError] = useState("");
+  const FetchProduct = async () => {
+    const { products, loading, error } = await useFetchProducts();
+    setLoading(loading);
+    setProductData(products);
+    setError(error);
+  };
+  FetchProduct();
+
+  const results = (
+    <div>
+      <ProductTable products={productData} />
+    </div>
+  );
   return (
     <Container className="container">
       <div className="navbar">
@@ -64,38 +84,7 @@ export default function Transactions() {
             <Button className="deletebutton">Delete Product</Button>
           </form>
         </div>
-        <div>
-          <table class="table table-dark">
-            <thead>
-              <tr>
-                <th scope="col">#ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Last</th>
-                <th scope="col">Owner</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div>{!myloading ? results : "Loading ..."}</div>
       </div>
     </Container>
   );

@@ -69,12 +69,12 @@
   font-family: "Montserrat";
 }
 .navitem {
-  border-left: 0.2em solid #3eb54e;
+  border-left: 0.5em solid #f8faf8;
   padding: 1em;
 }
 .navitem:hover {
-  color: #3eb54e;
-  border-left: 0.5em solid #3eb54e;
+  color: #86f395c2;
+  border-left: 0.5em solid #86f395c2;
 }
 
 .navitemactive {
