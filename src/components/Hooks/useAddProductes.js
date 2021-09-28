@@ -23,18 +23,15 @@ export default function AddProduct (data,setLoading,setProductId,userID){
         const product = firestore.collection('products')
             product.add({
             
-                title: data.title,
-                about: data.about,
-                duration: data.duration,
-                startDate: data.startDate,
+                name: data.name,
+                inStock: data.quatity,
+                quantity: data.duration,
                 price: data.price,
-                level: data.level,
-                preview: data.preview,
-                previewImg: data.previewImg,
-                period:data.period,
-                tutorId,
-                students:[],
-                lesson:[],
+                sold: data.sold,
+                leaseState:data.leaseState,
+                supplierId:data.supplierId,
+                supplier:data.supplier,
+                transactions:[],
                 createdAt
             }).then((docRef) => {
                 id = docRef.id;
