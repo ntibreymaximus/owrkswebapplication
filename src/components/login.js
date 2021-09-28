@@ -24,7 +24,7 @@ const {login} = useAuth()
       console.log("completed login, going to verify");
 
       //               await verifyUser();
-      history.push("/dashboard/home");
+      history.push("/dashboard");
     } catch (error) {
       setError(error.message);
     }

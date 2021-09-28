@@ -13,9 +13,10 @@ const TableRow =({Data})=> {
         <td className="text-center text-muted">#{Data.id}</td>
         <td>
             
-                    {Data.firstname} {Data.lastname}
+                    {Data.firstname} {Data.name}
                   
         </td>
+        <td className="text-center">{Data.company} </td>
         <td className="text-center">{Data.email} </td>
         
         <td className="text-center">
@@ -42,8 +43,8 @@ const TableRow =({Data})=> {
 }
 
 
-const UserTable =({users})=>{
-    const [Data,setData]= useState(users);
+const SupplierTable =({supplier})=>{
+    const [Data,setData]= useState(supplier);
 
     return(
                     
@@ -53,7 +54,7 @@ const UserTable =({users})=>{
                     <Card className="main-card mb-3 card">
                         <Card.Header className="bg-white">
                             <Row>
-                            <Col sm={12} md={4}>Users</Col>
+                            <Col sm={12} md={4}>Suppliers</Col>
                             {/* <ActionButtonRight className="col-sm-12 col-md-3 text-end ">
                                 <div role="group" className="btn-group-sm btn-group">
                                     <Button active className=" btn btn-info">pending </Button>
@@ -76,6 +77,7 @@ const UserTable =({users})=>{
                                     <tr>
                                         <th className="text-center">#ID</th>
                                         <th>Name</th>
+                                        <th className="text-center">Company</th>
                                         <th className="text-center">Email</th>
                                         <th className="text-center">Actions</th>
 
@@ -83,7 +85,7 @@ const UserTable =({users})=>{
                                 </thead>
                                 
                                 
-                                { Data && <TableBody Data={users}/>}
+                                { Data && <TableBody Data={supplier}/>}
                             </Table>
                         </div>
                         }
@@ -95,4 +97,4 @@ const UserTable =({users})=>{
 }
 
 
-export default UserTable;
+export default SupplierTable;

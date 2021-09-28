@@ -33,7 +33,7 @@ export function AuthProvider ({children}) {
      
   
       }
-    function signup(email, password, firstName, lastName ) {
+    function CreateUser(email, password, firstName, lastName ) {
         return auth.createUserWithEmailAndPassword(email, password)
                     .then((response) => {
                         const uid = response.user.uid
@@ -50,7 +50,7 @@ export function AuthProvider ({children}) {
                             .set(data)
                             .then(() => {
                                 console.log("succes? You can login now")
-                                setuserID(uid)
+                                // setuserID(uid)
                             // toast.show("Success!", {type: 'success'});
                             // navigation.navigate('Login', { user: data })
                             })
@@ -59,10 +59,7 @@ export function AuthProvider ({children}) {
                             // toast.show(error.message, {type: 'danger'});
                             });
                     })
-                    // .catch((error) => {
-                    //     console.log("error?", error.message)
-                    // // toast.show(error.message, {type: 'danger'});
-                    // });
+                   
                 }
 
     function tutor_signup(email, password, firstName, lastName ) {
@@ -192,7 +189,7 @@ export function AuthProvider ({children}) {
 
     const value = {
         currentUser, userID,
-        signup, login, logout, resetPassword, updateEmail, updatePassword, updateProfile,
+        CreateUser, login, logout, resetPassword, updateEmail, updatePassword, updateProfile,
         verifyUser, tutor_login, tutor_signup
     }
     return (

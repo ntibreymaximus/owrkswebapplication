@@ -1,9 +1,35 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Sidebar, Sidenav, Nav, Button } from "rsuite";
 import "../css/users.css";
-export default class Users extends Component {
-  render() {
+import UserTable from "./helpers/Tables/UserTable";
+import useFetchUsers from "./Hooks/useFetchUsers";
+export default function Users() {
+
+  const [userData,setUserData] = useState([])
+  const [myloading,setLoading] = useState(true)
+  const [myerror,setError] = useState('')
+
+  
+   // useEffect(()=>{
+    const FetchUsers = async()=>{
+      // console.log(userID);
+      const {users, loading ,error} = await useFetchUsers();
+      setLoading(loading);
+      setUserData(users);
+      setError(error);
+
+    }
+    FetchUsers();
+
+// },[])
+
+    const results = <>
+      <UserTable
+        users = {userData}
+      />
+    </>
+
     return (
       <Container className="container">
         <div className="navbar">
@@ -53,39 +79,10 @@ export default class Users extends Component {
             </form>
           </div>
           <div>
-            <table class="table table-dark">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
+          {!myloading ? results : "Loading ..."}
           </div>
         </div>
       </Container>
     );
-  }
+  
 }
