@@ -54,8 +54,8 @@ const TableRow =({Data})=> {
 }
 
 
-const ProductTable =({products})=>{
-    const [Data,setData]= useState(products);
+const UserTable =({users})=>{
+    const [Data,setData]= useState(users);
 
     return(
                     
@@ -65,7 +65,7 @@ const ProductTable =({products})=>{
                     <Card className="main-card mb-3 card">
                         <Card.Header className="bg-white">
                             <Row>
-                            <Col sm={12} md={4}>Products</Col>
+                            <Col sm={12} md={4}>Users</Col>
                             {/* <ActionButtonRight className="col-sm-12 col-md-3 text-end ">
                                 <div role="group" className="btn-group-sm btn-group">
                                     <Button active className=" btn btn-info">pending </Button>
@@ -97,7 +97,7 @@ const ProductTable =({products})=>{
                                 </thead>
                                 
                                 
-                                { Data && <TableBody Data={products}/>}
+                                { Data && <TableBody Data={users}/>}
                             </Table>
                         </div>
                         }
@@ -109,4 +109,4 @@ const ProductTable =({products})=>{
 }
 
 
-export default ProductTable;
+export default UserTable;

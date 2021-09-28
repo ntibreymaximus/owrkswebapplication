@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Sidebar, Sidenav, Nav, Button } from "rsuite";
+import ProductTable from "./helpers/Tables/ProductTable";
 import useFetchProducts from "./Hooks/useFetchProducts";
 
 const Products =()=> {
@@ -12,9 +13,9 @@ const Products =()=> {
   // useEffect(()=>{
     const FetchProduct = async()=>{
           // console.log(userID);
-      const {product, loading ,error} = await useFetchProducts();
+      const {products, loading ,error} = await useFetchProducts();
       setLoading(loading);
-      setProductData(product);
+      setProductData(products);
       setError(error);
 
     }
@@ -23,36 +24,9 @@ const Products =()=> {
   // },[])
 
   const results = <div>
-  <table className="table table-dark">
-    <thead>
-      <tr>
-        <th scope="col">#ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Last</th>
-        <th scope="col">Owner</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
+    <ProductTable
+    products ={productData}
+    />
 </div>;
 
     return (
