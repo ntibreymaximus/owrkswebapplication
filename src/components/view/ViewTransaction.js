@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { Divider } from 'rsuite';
+import AddTransactionForm from '../helpers/Forms/createTransactionForm';
 
 
 
@@ -22,6 +23,7 @@ const ViewTransaction =({data})=>{
             <Divider/>
             <div>
                 <h3>Products</h3>
+                {/* <AddTransactionForm /> */}
 
             </div>
 

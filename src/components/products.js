@@ -1,4 +1,5 @@
 import React, { Component, useState } from "react";
+import { Col, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Container, Sidebar, Sidenav, Nav, Button } from "rsuite";
 import AddModal from "../modal/addModal";
@@ -33,7 +34,8 @@ export default function Transactions() {
   );
   return (
     <Container className="container">
-      <SideNavigation/>
+            <Col md={3} ><SideNavigation/></Col>
+      <Col>
 
       <div className="navcontent">
         <div class="container-fluid searchoptions">
@@ -61,8 +63,9 @@ export default function Transactions() {
             <Button className="deletebutton">Delete Product</Button>
           </form>
         </div>
-        <div>{!myloading ? results : "Loading ..."}</div>
+        <div>{!myloading ? results : <Spinner animation="border" variant="white"/>}</div>
       </div>
+    </Col>
     </Container>
   );
 }

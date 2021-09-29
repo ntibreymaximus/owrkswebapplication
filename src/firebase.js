@@ -55,7 +55,9 @@ export const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 export const db = firebase.firestore();
 
 export const increment = firebase.firestore.FieldValue.increment(1);
+export const increaseBy=(value)=> firebase.firestore.FieldValue.increment(value);
 export const decrement = firebase.firestore.FieldValue.increment(-1);
+export const decreaseBy=(value)=> firebase.firestore.FieldValue.increment(-(value));
 export const arrayAdd =firebase.firestore.FieldValue; 
 
 export const AddArrayField = (collection, field, NewId, destinationID) => {

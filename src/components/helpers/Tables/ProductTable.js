@@ -32,7 +32,7 @@ const TableRow =({Data})=> {
             </div>
         </td>
         <td className="text-center">{Data.supplier} </td>
-        <td className="text-center">{Data.quantity} /{Data.quantity}</td>
+        <td className="text-center">{Data.quantity} /{Data.inStock}</td>
         <td className="text-center">
             <Badge bg="warning" text="dark" className="bg-warning">{Data.leaseState ? 'Lease':'Sell'}</Badge>
         </td>

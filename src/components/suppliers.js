@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import { Col, Spinner} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { Container, Sidebar, Sidenav, Nav, Button } from "rsuite";
 import AddModal from "../modal/addModal";
@@ -32,35 +33,36 @@ export default function Suppliers() {
   );
   return (
     <Container className="container">
-      <SideNavigation/>
-    
-      <div className="navcontent">
-        <div class="container-fluid searchoptions">
-          <form class="d-flex">
-            <input
-              className="form-control searchforminput"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <Button className="searchbutton">Search</Button>
-            <Button className="addbutton" onClick={() => setShow(true)}>
-              Add Supplier
-            </Button>
-            <AddModal
-              title="Add Supplier"
-              // onClose={() => setShow(false)}
-              show={show}
-              // onSubmit={<Dashboard />}
-              button="Add Supplier"
-            >
-              <AddSupplierForm closeModal={closeModal}  />
-            </AddModal>
-            <Button className="deletebutton">Delete Supplier</Button>
-          </form>
+      <Col md={3}><SideNavigation/></Col>
+      <Col>
+        <div className="navcontent">
+          <div class="container-fluid searchoptions">
+            <form class="d-flex">
+              <input
+                className="form-control searchforminput"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <Button className="searchbutton">Search</Button>
+              <Button className="addbutton" onClick={() => setShow(true)}>
+                Add Supplier
+              </Button>
+              <AddModal
+                title="Add Supplier"
+                // onClose={() => setShow(false)}
+                show={show}
+                // onSubmit={<Dashboard />}
+                button="Add Supplier"
+              >
+                <AddSupplierForm closeModal={closeModal}  />
+              </AddModal>
+              <Button className="deletebutton">Delete Supplier</Button>
+            </form>
+          </div>
+          <div>{!myloading ? results : <Spinner animation="border" variant="white"/>}</div>
         </div>
-        <div>{!myloading ? results : "Loading ..."}</div>
-      </div>
+      </Col>
     </Container>
   );
 }

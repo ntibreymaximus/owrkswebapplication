@@ -142,7 +142,7 @@ const AddSupplierForm =({closeModal})=>{
                     onClick={()=>Proceed()}
                     className=" btn-success text-center"
                     >
-                    Proceed {(loading && !error)   &&  <span>Loading...</span> }
+                    Proceed {(loading && !error)   &&  <Spinner animation="border" variant="white"/> }
                     </Button>
 
                 </Col>

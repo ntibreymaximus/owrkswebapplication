@@ -8,21 +8,16 @@ import { useAuth } from '../../Context/AuthContext';
 import { firestore, storageRef } from '../../../firebase';
 
 // import AddProduct from '../../Hooks/useAddProducts';
-import AddSupplier from '../../Hooks/useAddSupplier';
+import AddUser from '../../Hooks/useAddUsere';
  import style from 'bootstrap/dist/css/bootstrap.min.css';
-import AddTransaction from '../../Hooks/useAddTransaction';
 
 //visible header that contains LOGO and Navigation Icon
 var d = new Date();
 var n = d.getTime();
 
-const AddTransactionForm =({closeModal,product})=>{
+const AddUserForm =({closeModal})=>{
      // files to upload
-  const [data, setData] = useState({
-      productId:product.id,
-      supplierId:product.supplierId,
-      quantity:0,
-    });
+  const [data, setData] = useState([]);
   const [mainError, setMainError] = useState('');
   const [validated, setValidated] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -49,8 +44,8 @@ const AddTransactionForm =({closeModal,product})=>{
     const findFormErrors = () => {
         const newErrors = {}
         // name errors
-        if ( !data.quantity || data.quantity === '' ||data.quantity === 0 ) newErrors.name = 'Cannot be blank or Zero!'
-       else if ( data.quantity > product.inStock ) newErrors.quantity = 'Product Quantity not enough'
+        if ( !data.name || data.name === '' ) newErrors.name = 'Cannot be blank!'
+        else if ( data.name.length > 100 ) newErrors.name = 'Name is too long!'
         // food errors
         // if ( !data.email || data.email === '' ) newErrors.startDate = 'Add a valid email!'
     
@@ -62,16 +57,11 @@ const AddTransactionForm =({closeModal,product})=>{
     
     const Submit = async ()=>{ 
         // Add Product
-        const {error,code} = await AddTransaction(data,userID);
+        const {error,success} = await AddUser(data,userID);
         
         setMainError(error);
-        setSuccess(code);
-        setData(  {productId:product.id,
-            supplierId:product.supplierId,
-            userId:'',
-            quantity:'',
-            leaseState:''
-          });
+        setSuccess(success);
+        setData({name:'',email:''});
         setLoading(false)
         // closeModal()
 
@@ -99,42 +89,42 @@ const AddTransactionForm =({closeModal,product})=>{
 
     const output = <div className={style}>
            <Form noValidate validated={validated} onSubmit={Proceed} inline>
-                 <Form.Group className="row" controlId="validationCustom01">
+
+                {/* election TITLE */}
+                <Form.Group className="row" controlId="validationCustom01">
                     <Form.Label className="col-3 align-bottom text-end mx-auto">
-                        Product ID
+                    First Name
                     </Form.Label>
                     <InputGroup className="form-input col">
 
                     <Form.Control
                     className=""
                     type="text"
-                    name="productId"
+                    name="firstname"
                     required ={true}
-                    value={data.productId}
-                    // onChange={eventHandler}
-                    disabled
-                    isInvalid={ !!formError.productId }
+                    value={data.firstname}
+                    onChange={eventHandler}
+                    isInvalid={ !!formError.firstname }
                     />
                     <Form.Control.Feedback type="invalid">
                 {formError.name}
                 </Form.Control.Feedback>
                 </InputGroup>
                 </Form.Group> 
-                 <Form.Group className="row" controlId="validationCustom01">
+                <Form.Group className="row" controlId="validationCustom01">
                     <Form.Label className="col-3 align-bottom text-end mx-auto">
-                        Supplier ID
+                    Last Name
                     </Form.Label>
                     <InputGroup className="form-input col">
 
                     <Form.Control
                     className=""
                     type="text"
-                    name="supplierId"
+                    name="lastname"
                     required ={true}
-                    value={data.supplierId}
-                    // onChange={eventHandler}
-                    disabled
-                    isInvalid={ !!formError.productId }
+                    value={data.lastname}
+                    onChange={eventHandler}
+                    isInvalid={ !!formError.lastname }
                     />
                     <Form.Control.Feedback type="invalid">
                 {formError.name}
@@ -145,66 +135,21 @@ const AddTransactionForm =({closeModal,product})=>{
                 {/* election TITLE */}
                 <Form.Group className="row" controlId="validationCustom01">
                     <Form.Label className="col-3 align-bottom text-end mx-auto">
-                        User ID
+                    User Email
                     </Form.Label>
                     <InputGroup className="form-input col">
 
                     <Form.Control
                     className=""
-                    type="text"
-                    name="userId"
+                    type="email"
+                    name="email"
                     required ={true}
-                    value={data.userId}
+                    value={data.email}
                     onChange={eventHandler}
-                    isInvalid={ !!formError.buyerId }
+                    isInvalid={ !!formError.email }
                     />
                     <Form.Control.Feedback type="invalid">
-                {formError.name}
-                </Form.Control.Feedback>
-                </InputGroup>
-                </Form.Group> 
-             
-                <Form.Group className="row" controlId="validationCustom04">
-                    <Form.Label className="col-3 align-bottom my-auto text-end">
-                    Release Type 
-                    </Form.Label>
-                    <InputGroup className="form-input col" >
-                    
-                    <Form.Control
-                    as="select"
-                    className=" col"
-                    name="leaseState"
-                    value={data.leaseState}
-                    onChange={eventHandler}
-                    isInvalid={ !!formError.leaseState }
-                    
-                    >
-                    <option value=''>Select Type</option>
-                    <option value={true}>Lease </option>
-                    <option  value={false}>Paid </option>
-                    </Form.Control>
-                    </InputGroup>
-                </Form.Group>
-
-
-                {/* election TITLE */}
-                <Form.Group className="row" controlId="validationCustom01">
-                    <Form.Label className="col-3 align-bottom text-end mx-auto">
-                    Quantity
-                    </Form.Label>
-                    <InputGroup className="form-input col">
-
-                    <Form.Control
-                    className=""
-                    type="number"
-                    name="quantity"
-                    required ={true}
-                    value={data.quantity}
-                    onChange={eventHandler}
-                    isInvalid={ !!formError.quantity }
-                    />
-                    <Form.Control.Feedback type="invalid">
-                {formError.quantity}
+                {formError.email}
                 </Form.Control.Feedback>
                 </InputGroup>
                 </Form.Group>
@@ -217,7 +162,7 @@ const AddTransactionForm =({closeModal,product})=>{
                     onClick={()=>Proceed()}
                     className=" btn-success text-center"
                     >
-                    Proceed {(loading && !error)   && <Spinner animation="border" variant="white"/> }
+                    Proceed {(loading && !error)   &&  <Spinner animation="border" variant="white"/> }
                     </Button>
 
                 </Col>
@@ -229,8 +174,8 @@ const AddTransactionForm =({closeModal,product})=>{
         <>
         {(error ) && <Alert variant="danger"><h3 className="text-muted mx-auto">{error}</h3></Alert>}
             
-            {success && <Alert variant="success"><h4 className="mx-auto">{"Transaction added Succesfuly"}</h4></Alert> }
-            {success && <Alert variant="success"><h4 className="mx-auto">Transaction ID : {success}</h4></Alert>}
+            {success && <Alert variant="success"><h3 className="mx-auto">{"User added Succesfuly"}</h3></Alert> }
+            {success && <Alert variant="success"><h3 className="mx-auto">New User ID : {success}</h3></Alert>}
             {(!error && !success)   &&  output }
 
             
@@ -239,4 +184,4 @@ const AddTransactionForm =({closeModal,product})=>{
     );
 }
 
-export default AddTransactionForm;
+export default AddUserForm;
