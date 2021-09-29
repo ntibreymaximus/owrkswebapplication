@@ -96,8 +96,8 @@ const TransactionTable =({transactions})=>{
                                 <thead>
                                     <tr>
                                         <th className="text-center">#ID</th>
-                                        <th>Buyer ID</th>
-                                        <th>Owner ID</th>
+                                        <th>User ID</th>
+                                        <th>Supplier ID</th>
                                         <th className="text-center">Quantity</th>
                                         <th className="text-center">Status</th>
                                         <th className="text-center">Actions</th>

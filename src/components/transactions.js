@@ -1,14 +1,37 @@
 import React, { Component, useState } from "react";
-import { Col } from "react-bootstrap";
+import { Col, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Container, Sidebar, Sidenav, Nav, Button } from "rsuite";
 import AddModal from "../modal/addModal";
 import Dashboard from "./dashboard";
+import TransactionTable from "./helpers/Tables/TransactionTable";
+import useFetchTransaction from "./Hooks/useFetchTransaction";
 import SideNavigation from "./sidenavigation";
 
 
 export default function Transactions() {
   const [show, setShow] = useState(false);
+  const [transactionData, setTransactionData] = useState([]);
+  const [myloading, setLoading] = useState(true);
+  const [myerror, setError] = useState("");
+
+  const closeModal =()=>{
+    setShow(false)
+  }
+  
+  const FetchTransaction = async () => {
+    const { users, loading, error } = await useFetchTransaction();
+    setLoading(loading);
+    setTransactionData(users);
+    setError(error);
+  };
+
+  FetchTransaction();
+  const results = (
+    <>
+      <TransactionTable transactions={transactionData} />
+    </>
+  );
   return (
     <Container className="container">
       <Col md={3} ><SideNavigation/></Col>
@@ -37,37 +60,10 @@ export default function Transactions() {
               </form>
             </div>
             <div>
-              <table class="table table-dark">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          
+          </div>
+          <div>{!myloading ? results : <Spinner animation="border" variant="white"/>}</div>
+
           </div>
       </Col>
     </Container>

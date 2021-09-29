@@ -3,6 +3,7 @@ import { Col, Spinner} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { Container, Sidebar, Sidenav, Nav, Button } from "rsuite";
 import AddModal from "../modal/addModal";
+import ViewModal from '../modal/viewModal';
 import Dashboard from "./dashboard";
 import AddSupplierForm from './helpers/Forms/addSupplierForm';
 import SupplierTable from "./helpers/Tables/SupplierTable";
@@ -48,15 +49,15 @@ export default function Suppliers() {
               <Button className="addbutton" onClick={() => setShow(true)}>
                 Add Supplier
               </Button>
-              <AddModal
+              <ViewModal
                 title="Add Supplier"
                 // onClose={() => setShow(false)}
                 show={show}
                 // onSubmit={<Dashboard />}
-                button="Add Supplier"
+                // button="Add Supplier"
               >
                 <AddSupplierForm closeModal={closeModal}  />
-              </AddModal>
+              </ViewModal>
               <Button className="deletebutton">Delete Supplier</Button>
             </form>
           </div>
