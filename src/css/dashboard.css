@@ -1,10 +1,10 @@
 .box {
-  width: 75%;
-  padding: 2em;
-  background: white;
-  margin: 5%;
-  color: #3eb54e;
+  width: 75% !important;
+  padding: 2em !important;
+  background: white !important;
+  margin: 5% !important;
+  color: #3eb54e !important;
 }
 .addbutton {
-  margin-left: 100px;
+  margin-left: 100px !important;
 }

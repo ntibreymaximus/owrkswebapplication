@@ -6,7 +6,7 @@ import Hashids from 'hashids'
 
 
 
-async function AddProduct(data,userID){
+async function AddSupplier(data,userID){
     const hashids = new Hashids('',5)
     const longhashids = new Hashids('alphaStats',15)
     let error = ''
@@ -19,19 +19,9 @@ async function AddProduct(data,userID){
         const createdAt = timestamp();
      
         var sfDocRef = firestore.collection("PC").doc("--Counter--");
-        const product = firestore.collection('products')
+        const supplier = firestore.collection('suppliers')
         const users = firestore.collection('users').doc(userID);
-        // let promise = await admin.firestore().runTransaction(transaction => {
-        //     var post = transaction.get(docRef);
-        //     var anotherPost = transaction.get(anotherDocRef);
-          
-        //     if (post.exists && anotherPost.exists) {
-        //       var newLikes = (post.data().likes || 0) + 1;
-        //       await transaction.update(docRef, { likes: newLikes });
-        //       newLikes = (anotherPost.data().likes || 0) + 1;
-        //       await transaction.update(anotherdocRef, { likes: newLikes });
-        //     }
-        //   })
+     
         await firestore.runTransaction(async (transaction) => {
             var ilect =  await transaction.get(users);
             var EC =  await transaction.get(sfDocRef);
@@ -40,25 +30,23 @@ async function AddProduct(data,userID){
                         throw "User does not exist!";
                     }
                 console.log(ilect.data())
-                console.log(ilect.data().myProductsCount)
-                var newProductCount = (ilect.data().myProductsCount || 0 ) +1;  
-                // if (ilect.data().pro || newProductCount <= 3) {
+                console.log(ilect.data().mySuppliersCount)
+                var newSupplierCount = (ilect.data().mySuppliersCount || 0 ) +1;  
+                // if (ilect.data().pro || newSupplierCount <= 3) {
                  
                 
                     
                     
-                        var newCount = ( EC.data().ProductCount||0 ) + 1;
-                        console.log(newCount)
+                        var newCount = ( EC.data().SupplierCount||0 ) + 1;
+                        // console.log(newCount)
 
                         code=hashids.encode(newCount); 
                         id = longhashids.encode(newCount);    
 
-                        transaction.update(sfDocRef, { ProductCount: newCount });
-                        transaction.set(product.doc(id), {
+                        transaction.update(sfDocRef, { SupplierCount: newCount });
+                        transaction.set(supplier.doc(id), {
                             ...data,
-                            quantity: parseInt(data.quantity),
-                            inStock:true,
-                            transaction:[],
+                            products:[],
                             createdBy:userID,
                             createdAt,
                             id,
@@ -67,8 +55,8 @@ async function AddProduct(data,userID){
                         console.log(newCount)
 
                         transaction.update(users, {
-                            myProductsCount: increment,
-                            myProducts: arrayAdd.arrayUnion(id)
+                            mySuppliersCount: increment,
+                            mySuppliers: arrayAdd.arrayUnion(id)
                         });
 
                     return code;
@@ -76,13 +64,13 @@ async function AddProduct(data,userID){
                 
 
                 // }else{
-                //     error = "you have more than 3 Products and you are not pro"
+                //     error = "you have more than 3 Suppliers and you are not pro"
                     
                 //     throw error;
                 // } 
             }).catch((err) => {
                     error = err;
-                    console.error("Error adding Product: ", error);
+                    console.error("Error adding Supplier: ", error);
                     return error;
                 });
         
@@ -93,4 +81,4 @@ async function AddProduct(data,userID){
 
 }
 
-export default AddProduct;
+export default AddSupplier;

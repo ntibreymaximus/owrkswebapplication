@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Link, Switch } from "react-router-dom";
+import { Router, Link, Switch ,NavLink} from "react-router-dom";
 import "../css/sidenavigation.css";
 import {
   Nav,
@@ -10,8 +10,8 @@ import {
   Content,
   Button,
 } from "rsuite";
-export default class SideNavigation extends React.Component {
-  render() {
+export default function SideNavigation (){
+  
     return (
       <Container className="container">
         <div className="navbar">
@@ -23,26 +23,26 @@ export default class SideNavigation extends React.Component {
               </Sidenav.Header>
               <Sidenav.Body className="sidenavigationbody">
                 <Nav>
-                  <Link to="/dashboard" className="navlink">
-                    <Nav.Item className="navitem navitemactive">
+                  <NavLink to="/dashboard" activeClassName="navitemactive" className="navlink">
+                    <Nav.Item className="navitem ">
                       Dashboard
                     </Nav.Item>
-                  </Link>
-                  <Link to="/users" className="navlink">
+                  </NavLink>
+                  <NavLink to="/users" activeClassName="navitemactive" className="navlink">
                     <Nav.Item className="navitem">Users</Nav.Item>
-                  </Link>
-                  <Link to="/products" className="navlink">
+                  </NavLink>
+                  <NavLink to="/products" activeClassName="navitemactive" className="navlink">
                     <Nav.Item className="navitem">Products</Nav.Item>
-                  </Link>
-                  <Link to="/suppliers" className="navlink">
+                  </NavLink>
+                  <NavLink to="/suppliers" activeClassName="navitemactive" className="navlink">
                     <Nav.Item className="navitem">Suppliers</Nav.Item>
-                  </Link>
-                  <Link to="/transactions" className="navlink">
+                  </NavLink>
+                  <NavLink to="/transactions" activeClassName="navitemactive" className="navlink">
                     <Nav.Item className="navitem">Transactions</Nav.Item>
-                  </Link>
-                  <Link to="/">
+                  </NavLink>
+                  <NavLink to="/" activeClassName="navitemactive">
                     <Button className="logoutbutton">Logout</Button>
-                  </Link>
+                  </NavLink>
                 </Nav>
               </Sidenav.Body>
             </Sidenav>
@@ -51,5 +51,5 @@ export default class SideNavigation extends React.Component {
         <div className="navcontent"></div>
       </Container>
     );
-  }
+
 }

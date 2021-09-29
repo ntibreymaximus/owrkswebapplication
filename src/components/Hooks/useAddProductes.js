@@ -1,12 +1,12 @@
 import React ,{ useState ,useEffect} from "react";
 import { useAuth } from "../../../contexts/AuthContext";
 import {firestore,timestamp,AddArrayField} from '../../../firebase';
-import AddFile from "./useAddFile";
+// import AddFile from "./useAddFile";
 import {storage} from '../../../firebase';
 
 
 
-export default function AddProduct (data,setLoading,setProductId,userID){
+export default function AddProductes (data,setLoading,setProductId,userID){
     let error = ''
     let newdata = ''
     let progress ='';

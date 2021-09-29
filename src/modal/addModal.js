@@ -10,18 +10,20 @@ const AddModal = (props) => {
   return (
     <div
       className={`modal ${props.show ? "show" : ""}`}
-      onClick={props.onClose}
+      // onClick={props.onClose}
+      // onClick={props.onSubmit}
     >
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      {/* onClick={(e) => e.stopPropagation()} */}
+      <div className="modal-content" >
         <div className="modal-header">
           <h4 className="modal-title">{props.title}</h4>
         </div>
         <div className="modal-body">{props.children} </div>
         <div className="modal-footer">
-          <button className="addbutton" onClick={props.onSubmit}>
+          <button className="addbutton" >
             {props.button}
           </button>
-          <button className="cancelbutton" onClick={props.onClose}>
+          <button className="cancelbutton" >
             Cancel
           </button>
         </div>

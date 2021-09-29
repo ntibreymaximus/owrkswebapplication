@@ -5,7 +5,7 @@ import { BsPlus } from 'react-icons/bs';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import ViewModal from '../../../modal/viewModal';
 import { useAuth } from '../../Context/AuthContext';
-import ViewProduct from '../../view/ViewProduct';
+import ViewTransaction from '../../view/ViewTransaction';
 // import logo from '../../assets/img/logo.png'
 
 const TableRow =({Data})=> {
@@ -37,8 +37,8 @@ const TableRow =({Data})=> {
             <Badge bg="warning" text="dark" className="bg-warning">{Data.leaseState ? 'Lease':'Sell'}</Badge>
         </td>
         <td className="text-center">
-            <ViewModal show={show} handleClose={closeModal} title="Product Details">
-                <ViewProduct data={Data}/>
+            <ViewModal show={show} handleClose={closeModal} title="Transaction Details">
+                <ViewTransaction data={Data}/>
             </ViewModal>
             <Button onClick={()=>setShow(true)} type="button"  className="btn btn-success btn-sm">Details</Button>
         </td>
@@ -63,8 +63,8 @@ const TableRow =({Data})=> {
 }
 
 
-const ProductTable =({products})=>{
-    const [Data,setData]= useState(products);
+const TransactionTable =({transactions})=>{
+    const [Data,setData]= useState(transactions);
 
     return(
                     
@@ -74,7 +74,7 @@ const ProductTable =({products})=>{
                     <Card className="main-card mb-3 card">
                         <Card.Header className="bg-white">
                             <Row>
-                            <Col sm={12} md={4}>Products</Col>
+                            <Col sm={12} md={4}>Transactions</Col>
                             {/* <ActionButtonRight className="col-sm-12 col-md-3 text-end ">
                                 <div role="group" className="btn-group-sm btn-group">
                                     <Button active className=" btn btn-info">pending </Button>
@@ -86,7 +86,7 @@ const ProductTable =({products})=>{
                             
                         </Card.Header>
                         { !Data &&
-                                       <Alert variant="warning" className="mx-auto my-2 text-center"> <strong>No Products Added Yet</strong> </Alert>
+                                       <Alert variant="warning" className="mx-auto my-2 text-center"> <strong>No Transactions Added Yet</strong> </Alert>
                                
                                 }
                         { Data && 
@@ -96,9 +96,9 @@ const ProductTable =({products})=>{
                                 <thead>
                                     <tr>
                                         <th className="text-center">#ID</th>
-                                        <th>Name</th>
-                                        <th>Onwer</th>
-                                        <th className="text-center">Quantity / Instock</th>
+                                        <th>Buyer ID</th>
+                                        <th>Owner ID</th>
+                                        <th className="text-center">Quantity</th>
                                         <th className="text-center">Status</th>
                                         <th className="text-center">Actions</th>
 
@@ -106,7 +106,7 @@ const ProductTable =({products})=>{
                                 </thead>
                                 
                                 
-                                { Data && <TableBody Data={products}/>}
+                                { Data && <TableBody Data={transactions}/>}
                             </Table>
                         </div>
                         }
@@ -118,4 +118,4 @@ const ProductTable =({products})=>{
 }
 
 
-export default ProductTable;
+export default TransactionTable;

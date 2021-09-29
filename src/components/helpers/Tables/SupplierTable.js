@@ -3,11 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { Row,Col, Card , Table, Alert, Badge ,Button} from 'react-bootstrap';
 import { BsPlus } from 'react-icons/bs';
 import { Link, useHistory, useParams } from 'react-router-dom';
+import ViewModal from '../../../modal/viewModal';
 import { useAuth } from '../../Context/AuthContext';
+import ViewSupplier from '../../view/ViewSupplier';
 // import logo from '../../assets/img/logo.png'
 
 const TableRow =({Data})=> {
-
+    const [show, setShow] = useState(false);
+  const closeModal =()=>{
+    setShow(false)
+  }
     return (
         <tr>
         <td className="text-center text-muted">#{Data.id}</td>
@@ -16,11 +21,14 @@ const TableRow =({Data})=> {
                     {Data.firstname} {Data.name}
                   
         </td>
-        <td className="text-center">{Data.company} </td>
+        <td className="text-center">{Data.code} </td>
         <td className="text-center">{Data.email} </td>
         
         <td className="text-center">
-            <Button as={Link} to={"/loadmanager/"+Data.id} type="button"  className="btn btn-primary btn-sm">View</Button>
+        <ViewModal show={show} handleClose={closeModal} title="Supplier Details">
+                <ViewSupplier data={Data}/>
+            </ViewModal>
+            <Button onClick={()=>setShow(true)} type="button"  className="btn btn-success btn-sm">View</Button>
         </td>
     </tr>
     );
