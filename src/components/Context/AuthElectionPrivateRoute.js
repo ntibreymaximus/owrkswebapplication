@@ -5,13 +5,13 @@ import { useElectionContext } from "./ElectionContext";
 
 const AuthElectionPrivateRoute = ({ component: Component, ...rest }) => {
   const { currentElection } = useElectionContext();
-  const { currentUser,userID } = useAuth();
+  const { currentUser, userID } = useAuth();
 
   return (
     <Route
       {...rest}
       render={(props) => {
-        return (currentElection.userId === userID) ? (
+        return currentElection.userId === userID ? (
           <Component {...props} />
         ) : (
           <Redirect to="/dashboard" />

@@ -16,9 +16,9 @@ export default function Transactions() {
   const [myloading, setLoading] = useState(true);
   const [myerror, setError] = useState("");
 
-  const closeModal =()=>{
-    setShow(false)
-  }
+  const closeModal = () => {
+    setShow(false);
+  };
   const FetchProduct = async () => {
     const { products, loading, error } = await useFetchProducts();
     setLoading(loading);
@@ -34,38 +34,44 @@ export default function Transactions() {
   );
   return (
     <Container className="container">
-            <Col md={3} ><SideNavigation/></Col>
+      <Col md={3}>
+        <SideNavigation />
+      </Col>
       <Col>
-
-      <div className="navcontent">
-        <div class="container-fluid searchoptions">
-          <form class="d-flex">
-            <input
-              className="form-control searchforminput"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <Button className="searchbutton">Search</Button>
-            <Button className="addbutton" onClick={() => setShow(true)}>
-              Add Product
-            </Button>
-            <AddModal
-              title="Add Product"
-              onClose={() => setShow(false)}
-              show={show}
-              // onSubmit={<Dashboard />}
-              button="Add Product"
-            >
-              <AddProductForm closeModal={closeModal} />
-
-            </AddModal>
-            <Button className="deletebutton">Delete Product</Button>
-          </form>
+        <div className="navcontent">
+          <div class="container-fluid searchoptions">
+            <form class="d-flex">
+              <input
+                className="form-control searchforminput"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <Button className="searchbutton">Search</Button>
+              <Button className="addbutton" onClick={() => setShow(true)}>
+                Add Product
+              </Button>
+              <AddModal
+                title="Add Product"
+                onClose={() => setShow(false)}
+                show={show}
+                // onSubmit={<Dashboard />}
+                button="Add Product"
+              >
+                <AddProductForm closeModal={closeModal} />
+              </AddModal>
+              <Button className="deletebutton">Delete Product</Button>
+            </form>
+          </div>
+          <div>
+            {!myloading ? (
+              results
+            ) : (
+              <Spinner animation="border" variant="white" />
+            )}
+          </div>
         </div>
-        <div>{!myloading ? results : <Spinner animation="border" variant="white"/>}</div>
-      </div>
-    </Col>
+      </Col>
     </Container>
   );
 }

@@ -7,11 +7,10 @@ export default function App() {
   return (
     <div className="App">
       <AuthProvider>
-         <AuthRoutes>
-        <Login />
-      </AuthRoutes>
+        <AuthRoutes>
+          <Login />
+        </AuthRoutes>
       </AuthProvider>
-     
     </div>
   );
 }

@@ -75,25 +75,24 @@
 .navitem:hover {
   color: #86f395c2 !important;
   border-left: 0.5em solid #86f395c2 !important;
-
 }
 
-.navitemactive .navitem{
+.navitemactive .navitem {
   background-color: white !important;
   color: #1f5a27 !important;
   border-left: 0.5em solid #3eb54e !important;
   width: fit-content !important;
 }
-.navitem a:hover{
+.navitem a:hover {
   color: #86f395c2 !important;
 }
-.navitem a{
+.navitem a {
   color: white !important;
 }
-.navitemactive .navitem a{
+.navitemactive .navitem a {
   color: #1f5a27 !important;
 }
 
-a{
+a {
   text-decoration: none !important;
 }

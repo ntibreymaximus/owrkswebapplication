@@ -1,8 +1,7 @@
 import React, { useRef, useState } from "react";
 import "../css/login.css";
 import { Link, useHistory } from "react-router-dom";
-import {useAuth} from "../components/Context/AuthContext";
-
+import { useAuth } from "../components/Context/AuthContext";
 
 export default function Login() {
   const emailRef = useRef();
@@ -12,7 +11,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-const {login} = useAuth()
+  const { login } = useAuth();
   async function handleSubmit(e) {
     e.preventDefault();
 

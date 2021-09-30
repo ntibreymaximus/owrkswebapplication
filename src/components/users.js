@@ -30,31 +30,43 @@ export default function Users() {
   );
   return (
     <Container className="container">
-     <Col md={3}><SideNavigation/></Col>
-     <Col>
-       <div className="navcontent">
-        <div class="container-fluid searchoptions">
-          <form class="d-flex">
-            <input
-              className="form-control searchforminput"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <Button className="searchbutton">Search</Button>
-            <Button className="addbutton" onClick={() => setShow(true)}>
-              Add User
-            </Button>
-            <ViewModal show={show} title="Add User" handleClose={()=>setShow(false)}>
-              <AddUserForm closeModal={()=>setShow(false)}/>
-            </ViewModal >
-           
-            <Button className="deletebutton">Delete User</Button>
-          </form>
+      <Col md={3}>
+        <SideNavigation />
+      </Col>
+      <Col>
+        <div className="navcontent">
+          <div class="container-fluid searchoptions">
+            <form class="d-flex">
+              <input
+                className="form-control searchforminput"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <Button className="searchbutton">Search</Button>
+              <Button className="addbutton" onClick={() => setShow(true)}>
+                Add User
+              </Button>
+              <ViewModal
+                show={show}
+                title="Add User"
+                handleClose={() => setShow(false)}
+              >
+                <AddUserForm closeModal={() => setShow(false)} />
+              </ViewModal>
+
+              <Button className="deletebutton">Delete User</Button>
+            </form>
+          </div>
+          <div>
+            {!myloading ? (
+              results
+            ) : (
+              <Spinner animation="border" variant="white" />
+            )}
+          </div>
         </div>
-        <div>{!myloading ? results : <Spinner animation="border" variant="white"/>}</div>
-      </div>
-    </Col>
+      </Col>
     </Container>
   );
 }
