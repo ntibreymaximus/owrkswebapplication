@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ListGroup, Button } from "react-bootstrap";
 import { Divider } from "rsuite";
 import ViewModal from "../../modal/viewModal";
-import AddTransactionForm from "../helpers/Forms/createTransactionForm";
+import AddTransactionForm from "../helpers/Forms/createPaymentForm";
 import TransactionTable from "../helpers/Tables/TransactionTable";
 import useFetchTransactionByProductId from "../Hooks/useFetchTransactionsByProductId";
 

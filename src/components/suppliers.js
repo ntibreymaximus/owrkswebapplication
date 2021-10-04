@@ -7,6 +7,8 @@ import Dashboard from "./dashboard";
 import SupplierTable from "./helpers/Tables/SupplierTable";
 import useFetchSupplier from "./Hooks/useFetchSupplier";
 import SideNavigation from "./sidenavigation";
+
+
 export default function Suppliers() {
   const [show, setShow] = useState(false);
   const [supplierData, setSuppplierData] = useState([]);

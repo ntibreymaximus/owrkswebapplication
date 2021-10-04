@@ -3,6 +3,7 @@ import {
   arrayAdd,
   decreaseBy,
   firestore,
+  increaseBy,
   increment,
   timestamp,
 } from "../../firebase";
@@ -10,7 +11,7 @@ import { useAuth } from "../Context/AuthContext";
 // import { useAuth } from "../../../contexts/AuthContext";
 import Hashids from "hashids";
 
-async function AddTransaction(data, userID) {
+async function AddPayment(data, userID) {
   const hashids = new Hashids("", 5);
   const longhashids = new Hashids("alphaStats", 15);
   let error = "";
@@ -21,7 +22,7 @@ async function AddTransaction(data, userID) {
   const createdAt = timestamp();
 
   var sfDocRef = firestore.collection("PC").doc("--Counter--");
-  const transactionsRef = firestore.collection("transactions");
+  const transactionsRef = firestore.collection("transactions").doc(data.id);
   const paymentRef = firestore.collection("payments");
   const admins = firestore.collection("admin").doc(userID);
   const users = firestore.collection("users").doc(data.userId.toString());
@@ -53,70 +54,58 @@ async function AddTransaction(data, userID) {
         throw "User does not exist!";
       }
 
-      var newCount = (EC.data().TransactionCount || 44576) + 1;
+      var newCount = (EC.data().paymentCount || 10000) + 1;
       // console.log(newCount)
-      var paymentidnum = (EC.data().paymentCount || 44576) + 1;
-      var paymentid = paymentidnum.toString()
+  
 
       code = newCount;
       id = newCount.toString();
 
-      transaction.update(sfDocRef, { TransactionCount: newCount ,paymentCount:paymentidnum });
-      transaction.set(transactionsRef.doc(id), {
-        ...data,
-        product: product.data().name,
-        productId: product.data().id,
-        supplier: supplier.data().name,
-        supplierId: supplier.data().id,
-        payments:arrayAdd.arrayUnion(paymentid),
-        price : parseFloat(product.data().unitPrice * data.quantity),
-        amountPaid:parseFloat(data.amountPaid),
-        balance :parseFloat((product.data().unitPrice * data.quantity) - data.amountPaid),
-        createdAt,
-        id,
-        code,
+      transaction.update(sfDocRef, { paymentCount: newCount});
+     
+      transaction.update(transactionsRef, {
+     
+        payments:arrayAdd.arrayUnion(id),
+        amountPaid:increaseBy(data.amount),
+        balance :decreaseBy(data.amount),
+        lastUpdatedAt: createdAt,
       });
-      transaction.set(paymentRef.doc(paymentid), {
-        transactionId:id,
+      transaction.set(paymentRef.doc(id), {
         product: product.data().name,
+        transactionId:data.id,
         productId: product.data().id,
         supplier: supplier.data().name,
         supplierId: supplier.data().id,
-        amountPaid:parseFloat(data.amountPaid),
+        amountPaid:parseFloat(data.amount),
         costumerId:user.data().id,
         createdAt,
-        id:paymentid
+        id
        
       });
       // console.log(newCount);
 
       transaction.update(users, {
-        myTransactionsCount: increment,
-        myTransactions: arrayAdd.arrayUnion(id),
-        myProductsCount: increment,
-        myProducts: arrayAdd.arrayUnion(product.data().id),
+        myPaymentsCount: increment,
+        myPayments: arrayAdd.arrayUnion(id),
+      
       });
-      transaction.update(products, {
-        inStock: decreaseBy(data.quantity),
-        transactionsCount: increment,
-        transactions: arrayAdd.arrayUnion(id),
-      });
+    
 
       return code;
 
       // }else{
-      //     error = "you have more than 3 Transactions and you are not pro"
+      //     error = "you have more than 3 Payments and you are not pro"
 
       //     throw error;
       // }
     })
     .catch((err) => {
       error = err;
-      console.error("Error adding Transaction: ", error);
+      console.error("Error adding Payment: ", error);
       return error;
     });
 
   return { error, code };
 }
 
-export default AddTransaction;
+export default AddPayment;
