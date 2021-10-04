@@ -59,3 +59,7 @@ ths {
   font-family: "Montserrat" !important;
   padding: 0.8em !important;
 }
+
+.results {
+  margin-top: 25px;
+}

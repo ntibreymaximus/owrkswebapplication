@@ -33,35 +33,30 @@ export default function Transactions() {
   );
   return (
     <Container className="container">
-      <Col md={3}>
-        <SideNavigation />
-      </Col>
-      <Col className="mt-4">
-        <div className="navcontent">
-          <div class="container-fluid searchoptions">
-            <form class="d-flex">
-              <input
-                className="form-control searchforminput"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <Button className="searchbutton">Search</Button>
-              <Button className="addbutton" onClick={() => setShow(true)}>
-                Add Transaction
-              </Button>
-              <AddModal
-                title="Add Transaction"
-                onClose={() => setShow(false)}
-                show={show}
-                onSubmit={<Dashboard />}
-                button="Add Transaction"
-              ></AddModal>
-              <Button className="deletebutton">Delete Transaction</Button>
-            </form>
-          </div>
-          <div></div>
-          <div>
+      <SideNavigation />
+      <div className="navcontent">
+        <div class="container-fluid searchoptions">
+          <form class="d-flex">
+            <input
+              className="searchforminput"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <Button className="searchbutton">Search</Button>
+            <Button className="addbutton" onClick={() => setShow(true)}>
+              Add Transaction
+            </Button>
+            <AddModal
+              title="Add Transaction"
+              onClose={() => setShow(false)}
+              show={show}
+              onSubmit={<Dashboard />}
+              button="Add Transaction"
+            ></AddModal>
+            <Button className="deletebutton">Delete Transaction</Button>
+          </form>
+          <div className="results">
             {!myloading ? (
               results
             ) : (
@@ -69,7 +64,7 @@ export default function Transactions() {
             )}
           </div>
         </div>
-      </Col>
+      </div>
     </Container>
   );
 }

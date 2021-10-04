@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,  } from "react";
 import { ListGroup } from "react-bootstrap";
 import { Divider } from "rsuite";
 import AddTransactionForm from "../helpers/Forms/createTransactionForm";
@@ -6,7 +6,7 @@ import AddTransactionForm from "../helpers/Forms/createTransactionForm";
 const ViewTransaction = ({ data }) => {
   const [transaction, setTransaction] = useState(data);
 
-  // useEffect(()=>{
+  // (()=>{
 
   // },[])
   return (

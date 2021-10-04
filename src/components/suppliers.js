@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { Container, Sidebar, Sidenav, Nav, Button } from "rsuite";
+import { Container, Button } from "rsuite";
 import AddModal from "../modal/addModal";
 import Dashboard from "./dashboard";
 import SupplierTable from "./helpers/Tables/SupplierTable";
@@ -26,15 +24,12 @@ export default function Suppliers() {
   );
   return (
     <Container className="container">
-      <Col md={3}>
-        <SideNavigation />
-      </Col>
-      <Col className="mt-4">
+      <SideNavigation />
       <div className="navcontent">
         <div class="container-fluid searchoptions">
           <form class="d-flex">
             <input
-              className="form-control searchforminput"
+              className="searchforminput"
               type="search"
               placeholder="Search"
               aria-label="Search"
@@ -52,10 +47,9 @@ export default function Suppliers() {
             ></AddModal>
             <Button className="deletebutton">Delete Supplier</Button>
           </form>
+          <div className="results">{!myloading ? results : "Loading ..."}</div>
         </div>
-        <div>{!myloading ? results : "Loading ..."}</div>
       </div>
-      </Col>
     </Container>
   );
 }
