@@ -34,7 +34,7 @@ export default function Suppliers() {
             <Sidenav.Body className="sidenavigationbody">
               <Nav>
                 <Link to="/dashboard" className="navlink">
-                  <Nav.Item className="navitem ">Dashboard</Nav.Item>
+                  <Nav.Item className="navitem">Dashboard</Nav.Item>
                 </Link>
                 <Link to="/users" className="navlink">
                   <Nav.Item className="navitem">Users</Nav.Item>
@@ -62,7 +62,7 @@ export default function Suppliers() {
         <div class="container-fluid searchoptions">
           <form class="d-flex">
             <input
-              className="form-control searchforminput"
+              className="searchforminput"
               type="search"
               placeholder="Search"
               aria-label="Search"
@@ -80,8 +80,8 @@ export default function Suppliers() {
             ></AddModal>
             <Button className="deletebutton">Delete Supplier</Button>
           </form>
+          <div>{!myloading ? results : "Loading ..."}</div>
         </div>
-        <div>{!myloading ? results : "Loading ..."}</div>
       </div>
     </Container>
   );

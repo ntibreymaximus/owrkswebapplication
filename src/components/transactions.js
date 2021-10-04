@@ -1,12 +1,11 @@
-import React, { Component, useState } from "react";
-import { Col, Spinner } from "react-bootstrap";
+import React, { useState } from "react";
+import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Container, Sidebar, Sidenav, Nav, Button } from "rsuite";
 import AddModal from "../modal/addModal";
 import Dashboard from "./dashboard";
 import TransactionTable from "./helpers/Tables/TransactionTable";
 import useFetchTransaction from "./Hooks/useFetchTransaction";
-import SideNavigation from "./sidenavigation";
 
 export default function Transactions() {
   const [show, setShow] = useState(false);
@@ -33,34 +32,62 @@ export default function Transactions() {
   );
   return (
     <Container className="container">
-      <Col md={3}>
-        <SideNavigation />
-      </Col>
-      <Col className="mt-4">
-        <div className="navcontent">
-          <div class="container-fluid searchoptions">
-            <form class="d-flex">
-              <input
-                className="form-control searchforminput"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <Button className="searchbutton">Search</Button>
-              <Button className="addbutton" onClick={() => setShow(true)}>
-                Add Transaction
-              </Button>
-              <AddModal
-                title="Add Transaction"
-                onClose={() => setShow(false)}
-                show={show}
-                onSubmit={<Dashboard />}
-                button="Add Transaction"
-              ></AddModal>
-              <Button className="deletebutton">Delete Transaction</Button>
-            </form>
-          </div>
-          <div></div>
+      <div className="navbar">
+        <Sidebar className="sidenavigation">
+          <Sidenav>
+            <Sidenav.Header className="sidebarheader">
+              <h3 className="sidebarheaderh3">Welcome to</h3>
+              <h1 className="sidebarheaderh1">OWRKS</h1>
+            </Sidenav.Header>
+            <Sidenav.Body className="sidenavigationbody">
+              <Nav>
+                <Link to="/dashboard" className="navlink">
+                  <Nav.Item className="navitem">Dashboard</Nav.Item>
+                </Link>
+                <Link to="/users" className="navlink">
+                  <Nav.Item className="navitem">Users</Nav.Item>
+                </Link>
+                <Link to="/products" className="navlink">
+                  <Nav.Item className="navitem">Products</Nav.Item>
+                </Link>
+                <Link to="/suppliers" className="navlink">
+                  <Nav.Item className="navitem">Suppliers</Nav.Item>
+                </Link>
+                <Link to="/transactions" className="navlink">
+                  <Nav.Item className="navitem navitemactive">
+                    Transactions
+                  </Nav.Item>
+                </Link>
+                <Link to="/">
+                  <Button className="logoutbutton">Logout</Button>
+                </Link>
+              </Nav>
+            </Sidenav.Body>
+          </Sidenav>
+        </Sidebar>
+      </div>
+      <div className="navcontent">
+        <div class="container-fluid searchoptions">
+          <form class="d-flex">
+            <input
+              className="searchforminput"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <Button className="searchbutton">Search</Button>
+            <Button className="addbutton" onClick={() => setShow(true)}>
+              Add Transaction
+            </Button>
+            <AddModal
+              title="Add Transaction"
+              onClose={() => setShow(false)}
+              show={show}
+              onSubmit={<Dashboard />}
+              button="Add Transaction"
+            ></AddModal>
+            <Button className="deletebutton">Delete Transaction</Button>
+          </form>
           <div>
             {!myloading ? (
               results
@@ -69,7 +96,7 @@ export default function Transactions() {
             )}
           </div>
         </div>
-      </Col>
+      </div>
     </Container>
   );
 }
