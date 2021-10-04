@@ -34,47 +34,41 @@ export default function Login() {
   return (
     <div className="login">
       <h1 className="login-header">OWRKS</h1>
-      <div className="col-md-6">
-        <form onSubmit={handleSubmit}>
-          <h2 className="loginform-header">Admin Login</h2>
-          <div className="alert-danger">{error && error}</div>
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <div className="forminputcontainer">
-              <input
-                name="email"
-                className="form-control forminput"
-                id="email"
-                aria-describedby="email"
-                type="email"
-                placeholder="Enter email"
-                ref={emailRef}
-              />
-            </div>
-            <label htmlFor="password">Password</label>
-            <div className="forminputcontainer">
-              <input
-                type="password"
-                name="password"
-                className="form-control forminput"
-                id="password"
-                placeholder="Password"
-                ref={passwordRef}
-              />
-            </div>
-            <div className="forminputcontainer">
-              <Link to="/dashboard/home"></Link>
-              <button
-                type="submit"
-                disabled={loading}
-                className="btn btn-primary formbutton"
-              >
-                Login
-              </button>
-            </div>
+      <form onSubmit={handleSubmit}>
+        <h2 className="loginform-header">Admin Login</h2>
+        <div className="alert-danger">{error && error}</div>
+        <div className="form-group">
+          <label htmlFor="username">Username</label>
+          <div className="forminputcontainer">
+            <input
+              name="email"
+              className="forminput"
+              id="email"
+              aria-describedby="email"
+              type="email"
+              placeholder="Enter email"
+              ref={emailRef}
+            />
           </div>
-        </form>
-      </div>
+          <label htmlFor="password">Password</label>
+          <div className="forminputcontainer">
+            <input
+              type="password"
+              name="password"
+              className="forminput"
+              id="password"
+              placeholder="Password"
+              ref={passwordRef}
+            />
+          </div>
+          <div className="forminputcontainer">
+            <Link to="/dashboard/home"></Link>
+            <button type="submit" disabled={loading} className="formbutton">
+              Login
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }
