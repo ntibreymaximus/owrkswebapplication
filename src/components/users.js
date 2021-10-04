@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { Col, Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { Container, Sidebar, Sidenav, Nav, Button } from "rsuite";
+import { Spinner } from "react-bootstrap";
+import { Container, Button } from "rsuite";
 import "../css/users.css";
-import AddModal from "../modal/addModal";
 import ViewModal from "../modal/viewModal";
-import Dashboard from "./dashboard";
 import AddUserForm from "./helpers/Forms/addUserForm";
 import UserTable from "./helpers/Tables/UserTable";
 import useFetchUsers from "./Hooks/useFetchUsers";
@@ -30,35 +27,30 @@ export default function Users() {
   );
   return (
     <Container className="container">
-      <Col md={3}>
-        <SideNavigation />
-      </Col>
-      <Col>
-        <div className="navcontent">
-          <div class="container-fluid searchoptions">
-            <form class="d-flex">
-              <input
-                className="form-control searchforminput"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <Button className="searchbutton">Search</Button>
-              <Button className="addbutton" onClick={() => setShow(true)}>
-                Add User
-              </Button>
-              <ViewModal
-                show={show}
-                title="Add User"
-                handleClose={() => setShow(false)}
-              >
-                <AddUserForm closeModal={() => setShow(false)} />
-              </ViewModal>
-
-              <Button className="deletebutton">Delete User</Button>
-            </form>
-          </div>
-          <div>
+      <SideNavigation />
+      <div className="navcontent">
+        <div class="container-fluid searchoptions">
+          <form class="d-flex">
+            <input
+              className="searchforminput"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <Button className="searchbutton">Search</Button>
+            <Button className="addbutton" onClick={() => setShow(true)}>
+              Add User
+            </Button>
+            <ViewModal
+              show={show}
+              title="Add User"
+              handleClose={() => setShow(false)}
+            >
+              <AddUserForm closeModal={() => setShow(false)} />
+            </ViewModal>
+            <Button className="deletebutton">Delete User</Button>
+          </form>
+          <div className="results">
             {!myloading ? (
               results
             ) : (
@@ -66,7 +58,7 @@ export default function Users() {
             )}
           </div>
         </div>
-      </Col>
+      </div>
     </Container>
   );
 }

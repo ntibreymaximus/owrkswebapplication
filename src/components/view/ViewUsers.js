@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,  } from "react";
 import { ListGroup } from "react-bootstrap";
 import { Divider } from "rsuite";
 
 const ViewUser = ({ data }) => {
   const [user, setUser] = useState(data);
 
-  // useEffect(()=>{
+  // (()=>{
 
   // },[])
   return (

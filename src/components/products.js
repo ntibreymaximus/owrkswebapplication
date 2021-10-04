@@ -1,14 +1,12 @@
 import React, { Component, useState } from "react";
-import { Col, Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { Container, Sidebar, Sidenav, Nav, Button } from "rsuite";
+import { Spinner } from "react-bootstrap";
+import { Container, Button } from "rsuite";
 import AddModal from "../modal/addModal";
-import Dashboard from "./dashboard";
 import AddProductForm from "./helpers/Forms/addProductForm";
 import ProductTable from "./helpers/Tables/ProductTable";
 import useFetchProducts from "./Hooks/useFetchProducts";
 import SideNavigation from "./sidenavigation";
-
+import "../css/users.css";
 export default function Transactions() {
   const [show, setShow] = useState(false);
 
@@ -26,7 +24,6 @@ export default function Transactions() {
     setError(error);
   };
   FetchProduct();
-
   const results = (
     <div>
       <ProductTable products={productData} />
@@ -34,36 +31,31 @@ export default function Transactions() {
   );
   return (
     <Container className="container">
-      <Col md={3}>
-        <SideNavigation />
-      </Col>
-      <Col>
-        <div className="navcontent">
-          <div class="container-fluid searchoptions">
-            <form class="d-flex">
-              <input
-                className="form-control searchforminput"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <Button className="searchbutton">Search</Button>
-              <Button className="addbutton" onClick={() => setShow(true)}>
-                Add Product
-              </Button>
-              <AddModal
-                title="Add Product"
-                onClose={() => setShow(false)}
-                show={show}
-                // onSubmit={<Dashboard />}
-                button="Add Product"
-              >
-                <AddProductForm closeModal={closeModal} />
-              </AddModal>
-              <Button className="deletebutton">Delete Product</Button>
-            </form>
-          </div>
-          <div>
+      <SideNavigation />
+      <div className="navcontent">
+        <div class="container-fluid searchoptions">
+          <form class="d-flex">
+            <input
+              className="searchforminput"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <Button className="searchbutton">Search</Button>
+            <Button className="addbutton" onClick={() => setShow(true)}>
+              Add Product
+            </Button>
+            <AddModal
+              title="Add Product"
+              onClose={() => setShow(false)}
+              show={show}
+              button="Add Product"
+            >
+              <AddProductForm closeModal={closeModal} />
+            </AddModal>
+            <Button className="deletebutton">Delete Product</Button>
+          </form>
+          <div className="results">
             {!myloading ? (
               results
             ) : (
@@ -71,7 +63,7 @@ export default function Transactions() {
             )}
           </div>
         </div>
-      </Col>
+      </div>
     </Container>
   );
 }

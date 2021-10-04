@@ -2,19 +2,16 @@
   display: flex !important;
   align-items: stretch !important;
 }
-.navbar {
-  width: 25% !important;
-}
 .navcontent {
   width: 100% !important;
   margin-top: 2% !important;
-  margin-left: 10px !important;
+  margin-left: 25% !important;
   padding: 5% !important;
 }
 .sidenavigation {
   height: 100% !important;
-  width: 20% !important;
-  background-color: #1f5a27 !important;
+  width: 25% !important;
+  position: fixed;
   color: white !important;
   padding-top: 25px !important;
   padding-left: 10px !important;
@@ -69,8 +66,8 @@
   font-family: "Montserrat" !important;
 }
 .navitem {
-  border-left: 0.5em solid #f8faf8 !important;
-  padding: 1em !important;
+  border-left: 0.2em solid #f8faf8 !important;
+  padding: 0.8em !important;
 }
 .navitem:hover {
   color: #86f395c2 !important;
@@ -81,7 +78,7 @@
   background-color: white !important;
   color: #1f5a27 !important;
   border-left: 0.5em solid #3eb54e !important;
-  width: fit-content !important;
+  width: 100% !important;
 }
 .navitem a:hover {
   color: #86f395c2 !important;

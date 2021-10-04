@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,  } from "react";
 import { ListGroup, Button } from "react-bootstrap";
 import { Divider } from "rsuite";
 import ViewModal from "../../modal/viewModal";
@@ -16,7 +16,7 @@ const ViewProduct = ({ data }) => {
   const closeModal = () => {
     setShow(false);
   };
-  //  useEffect(()=>{
+  //  (()=>{
     const FetchTransaction = async (id) => {
       const { transaction, loading, error } = await useFetchTransactionByProductId(id);
       setLoading(loading);
