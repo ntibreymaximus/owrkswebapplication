@@ -13,7 +13,7 @@ export default class Routes extends Component {
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/users" component={Users} />
+        <Route exact path="/customers" component={Users} />
         <Route exact path="/products" component={Products} />
         <Route exact path="/suppliers" component={Suppliers} />
         <Route exact path="/transactions" component={Transactions} />

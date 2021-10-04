@@ -21,7 +21,8 @@ async function AddTransaction(data, userID) {
   const createdAt = timestamp();
 
   var sfDocRef = firestore.collection("PC").doc("--Counter--");
-  const transactionsRef = firestore.collection("transaction");
+  const transactionsRef = firestore.collection("transactions");
+  const paymentRef = firestore.collection("payments");
   const admins = firestore.collection("admin").doc(userID);
   const users = firestore.collection("users").doc(data.userId.toString());
   const suppliers = firestore
@@ -54,23 +55,40 @@ async function AddTransaction(data, userID) {
 
       var newCount = (EC.data().TransactionCount || 44576) + 1;
       // console.log(newCount)
+      var paymentidnum = (EC.data().paymentCount || 44576) + 1;
+      var paymentid = paymentidnum.toString()
 
       code = newCount;
       id = newCount.toString();
 
-      transaction.update(sfDocRef, { transactionCount: newCount });
+      transaction.update(sfDocRef, { TransactionCount: newCount });
       transaction.set(transactionsRef.doc(id), {
         ...data,
         product: product.data().name,
         productId: product.data().id,
         supplier: supplier.data().name,
         supplierId: supplier.data().id,
-        createdBy: userID,
+        payments:arrayAdd.arrayUnion(paymentid),
+        price : parseFloat(product.data().unitPrice * data.quantity),
+        amountPaid:parseFloat(data.amountPaid),
+        balance :parseFloat((product.data().unitPrice * data.quantity) - data.amountPaid),
         createdAt,
         id,
         code,
       });
-      console.log(newCount);
+      transaction.set(paymentRef.doc(paymentid), {
+        transactionId:id,
+        product: product.data().name,
+        productId: product.data().id,
+        supplier: supplier.data().name,
+        supplierId: supplier.data().id,
+        amountPaid:parseFloat(data.amountPaid),
+        costumerId:user.data().id,
+        createdAt,
+        id:paymentid
+       
+      });
+      // console.log(newCount);
 
       transaction.update(users, {
         myTransactionsCount: increment,

@@ -30,11 +30,11 @@ export default function SideNavigation() {
                   <Nav.Item className="navitem ">Dashboard</Nav.Item>
                 </NavLink>
                 <NavLink
-                  to="/users"
+                  to="/customers"
                   activeClassName="navitemactive"
                   className="navlink"
                 >
-                  <Nav.Item className="navitem">Users</Nav.Item>
+                  <Nav.Item className="navitem">Customers</Nav.Item>
                 </NavLink>
                 <NavLink
                   to="/products"
@@ -56,6 +56,13 @@ export default function SideNavigation() {
                   className="navlink"
                 >
                   <Nav.Item className="navitem">Transactions</Nav.Item>
+                </NavLink>
+                <NavLink
+                  to="/admin"
+                  activeClassName="navitemactive"
+                  className="navlink"
+                >
+                  <Nav.Item className="navitem">Admin</Nav.Item>
                 </NavLink>
                 <NavLink to="/" activeClassName="navitemactive">
                   <Button className="logoutbutton">Logout</Button>

@@ -61,9 +61,11 @@ const AddTransactionForm = ({ closeModal, product }) => {
 
   const findFormErrors = () => {
     const newErrors = {};
-    // name errors
+    // name errors amountPaid
     if (!data.quantity || data.quantity === "" || data.quantity === 0)
-      newErrors.name = "Cannot be blank or Zero!";
+      newErrors.quantity = "Cannot be blank or Zero!";
+    if (!data.amountPaid || data.amountPaid === "" || data.amountPaid === 0)
+      newErrors.amountPaid = "Cannot be blank or Zero!";
     else if (data.quantity > product.inStock)
       newErrors.quantity = "Product Quantity not enough";
     // food errors
@@ -205,6 +207,25 @@ const AddTransactionForm = ({ closeModal, product }) => {
               value={data.quantity}
               onChange={eventHandler}
               isInvalid={!!formError.quantity}
+            />
+            <Form.Control.Feedback type="invalid">
+              {formError.quantity}
+            </Form.Control.Feedback>
+          </InputGroup>
+        </Form.Group>
+        <Form.Group className="row" controlId="validationCustom01">
+          <Form.Label className="col-3 align-bottom text-end mx-auto">
+            Innitial Deposit
+          </Form.Label>
+          <InputGroup className="form-input col">
+            <Form.Control
+              className=""
+              type="number"
+              name="amountPaid"
+              required={true}
+              value={data.amountPaid}
+              onChange={eventHandler}
+              isInvalid={!!formError.amountPaid}
             />
             <Form.Control.Feedback type="invalid">
               {formError.quantity}

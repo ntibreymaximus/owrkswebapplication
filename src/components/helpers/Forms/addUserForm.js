@@ -57,10 +57,10 @@ const AddUserForm = ({ closeModal }) => {
   const findFormErrors = () => {
     const newErrors = {};
     // name errors
-    if (!data.name || data.name === "") newErrors.name = "Cannot be blank!";
-    else if (data.name.length > 100) newErrors.name = "Name is too long!";
+    if (!data.firstname || data.firstname === "") newErrors.firstname = "Cannot be blank!";
+    else if (data.firstname.length > 100) newErrors.firstname = "Name is too long!";
     // food errors
-    // if ( !data.email || data.email === '' ) newErrors.startDate = 'Add a valid email!'
+    if ( !data.email || data.email === '' ) newErrors.startDate = 'Add a valid email!';
 
     return newErrors;
   };
@@ -78,12 +78,15 @@ const AddUserForm = ({ closeModal }) => {
 
   const Proceed = async () => {
     // event.preventDefault();
+    setLoading(true);
 
     const newErrors = findFormErrors();
     // Conditional logic:
     if (Object.keys(newErrors).length > 0) {
       // We got errors!
       setFormError(newErrors);
+      setLoading(false);
+
     } else {
       // No errors! Put any logic here for the form submission!
       setLoading(true);
@@ -96,7 +99,7 @@ const AddUserForm = ({ closeModal }) => {
   const output = (
     <div className={style}>
       <Form noValidate validated={validated} onSubmit={Proceed} inline>
-        {/* election TITLE */}
+        {/*user details */}
         <Form.Group className="row" controlId="validationCustom01">
           <Form.Label className="col-3 align-bottom text-end mx-auto">
             First Name
@@ -135,8 +138,6 @@ const AddUserForm = ({ closeModal }) => {
             </Form.Control.Feedback>
           </InputGroup>
         </Form.Group>
-
-        {/* election TITLE */}
         <Form.Group className="row" controlId="validationCustom01">
           <Form.Label className="col-3 align-bottom text-end mx-auto">
             User Email
@@ -157,6 +158,66 @@ const AddUserForm = ({ closeModal }) => {
           </InputGroup>
         </Form.Group>
 
+        <Form.Group className="row" controlId="validationCustom01">
+          <Form.Label className="col-3 align-bottom text-end mx-auto">
+            Company or Venture Name
+          </Form.Label>
+          <InputGroup className="form-input col">
+            <Form.Control
+              className=""
+              type="text"
+              name="company"
+              required={true}
+              value={data.company}
+              onChange={eventHandler}
+              isInvalid={!!formError.company}
+            />
+            <Form.Control.Feedback type="invalid">
+              {formError.name}
+            </Form.Control.Feedback>
+          </InputGroup>
+        </Form.Group>
+        <Form.Group className="row" controlId="validationCustom01">
+          <Form.Label className="col-3 align-bottom text-end mx-auto">
+            Bussiness Registration ID
+          </Form.Label>
+          <InputGroup className="form-input col">
+            <Form.Control
+              className=""
+              type="text"
+              name="bussinessID"
+              required={true}
+              value={data.bussinessId}
+              onChange={eventHandler}
+              isInvalid={!!formError.bussinessId}
+            />
+            <Form.Control.Feedback type="invalid">
+              {formError.bussinessId}
+            </Form.Control.Feedback>
+          </InputGroup>
+        </Form.Group>
+        <Form.Group className="row" controlId="validationCustom01">
+          <Form.Label className="col-3 align-bottom text-end mx-auto">
+            Shop Address
+          </Form.Label>
+          <InputGroup className="form-input col">
+            <Form.Control
+              className=""
+              type="text"
+              name="bussinessID"
+              required={true}
+              value={data.address}
+              onChange={eventHandler}
+              isInvalid={!!formError.address}
+            />
+            <Form.Control.Feedback type="invalid">
+              {formError.address}
+            </Form.Control.Feedback>
+          </InputGroup>
+        </Form.Group>
+
+       
+        
         <Col className="text-center">
           <Button
             onClick={() => Proceed()}

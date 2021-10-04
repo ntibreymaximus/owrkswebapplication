@@ -11,6 +11,7 @@ const ViewModal = ({ title, show, handleClose, children }) => {
       backdrop="static"
       keyboard={false}
       onHide={handleClose}
+      scrollable
     >
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>

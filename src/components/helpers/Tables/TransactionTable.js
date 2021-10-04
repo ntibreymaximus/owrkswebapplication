@@ -18,27 +18,11 @@ const TableRow = ({ Data }) => {
     <tr>
       <td className="text-center text-muted">#{Data.id}</td>
       <td>
-        <div className="widget-content p-0">
-          <div className="widget-content-wrapper">
-            <div className="widget-content-left mr-3">
-              <div className="widget-content-left">
-                <img
-                  width="40"
-                  className="rounded-circle"
-                  src={Data.img}
-                  alt="Avatar"
-                />
-              </div>
-            </div>
-            <div className="widget-content-left flex2">
-              <div className="widget-heading">{Data.name}</div>
-            </div>
-          </div>
-        </div>
+        {Data.userId}
       </td>
-      <td className="text-center">{Data.supplier} </td>
+      <td className="text-center">{Data.product} </td>
       <td className="text-center">
-        {Data.quantity} /{Data.quantity}
+        {Data.quantity} 
       </td>
       <td className="text-center">
         <Badge bg="warning" text="dark" className="bg-warning">
@@ -109,8 +93,8 @@ const TransactionTable = ({ transactions }) => {
                 <thead>
                   <tr>
                     <th className="text-center">#ID</th>
-                    <th>User ID</th>
-                    <th>Supplier ID</th>
+                    <th>Costumer ID</th>
+                    <th>Product</th>
                     <th className="text-center">Quantity</th>
                     <th className="text-center">Status</th>
                     <th className="text-center">Actions</th>
