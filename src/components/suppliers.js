@@ -34,7 +34,7 @@ export default function Suppliers() {
         <div class="container-fluid searchoptions">
           <form class="d-flex">
             <input
-              className="form-control searchforminput"
+              className="searchforminput"
               type="search"
               placeholder="Search"
               aria-label="Search"
@@ -52,8 +52,8 @@ export default function Suppliers() {
             ></AddModal>
             <Button className="deletebutton">Delete Supplier</Button>
           </form>
+          <div>{!myloading ? results : "Loading ..."}</div>
         </div>
-        <div>{!myloading ? results : "Loading ..."}</div>
       </div>
       </Col>
     </Container>
