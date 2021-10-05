@@ -5,7 +5,7 @@ import { BsPlus } from "react-icons/bs";
 import { Link, useHistory, useParams } from "react-router-dom";
 import ViewModal from "../../../modal/viewModal";
 import { useAuth } from "../../Context/AuthContext";
-import ViewUser from "../../view/ViewUsers";
+import ViewPayment from "../../view/ViewPayment";
 // import logo from '../../assets/img/logo.png'
 
 const TableRow = ({ Data }) => {
@@ -13,21 +13,29 @@ const TableRow = ({ Data }) => {
   const closeModal = () => {
     setShow(false);
   };
+
   return (
     <tr>
       <td className="text-center text-muted">#{Data.id}</td>
       <td>
-        {Data.firstname} {Data.lastname}
+        {Data.supplierId}
       </td>
-      <td className="text-center">{Data.email} </td>
-
+      <td className="text-center">{Data.product} </td>
       <td className="text-center">
-      <ViewModal
+        {Data.quantity} 
+      </td>
+      <td className="text-center">
+        <Badge bg="warning" text="dark" className="bg-warning">
+          {Data.leaseState ? "Lease" : "Sell"}
+        </Badge>
+      </td>
+      <td className="text-center">
+        <ViewModal
           show={show}
           handleClose={closeModal}
-          title="Costumer Details"
+          title="Payment Details"
         >
-          <ViewUser data={Data} />
+          <ViewPayment data={Data} />
         </ViewModal>
         <Button
           onClick={() => setShow(true)}
@@ -51,8 +59,8 @@ const TableBody = ({ Data }) => {
   );
 };
 
-const UserTable = ({ users }) => {
-  const [Data, setData] = useState(users);
+const PaymentTable = ({ payments }) => {
+  const [Data, setData] = useState(payments);
 
   return (
     //  {/* table for recent elections */}
@@ -62,21 +70,15 @@ const UserTable = ({ users }) => {
           <Card.Header className="bg-white">
             <Row>
               <Col sm={12} md={4}>
-                Users
+                Payments
               </Col>
-              {/* <ActionButtonRight className="col-sm-12 col-md-3 text-end ">
-                                <div role="group" className="btn-group-sm btn-group">
-                                    <Button active className=" btn btn-info">pending </Button>
-                                    <Button className="btn btn-info">running</Button>
-                                    <Button className="btn btn-info">Ended</Button>
-                                </div>
-                            </ActionButtonRight> */}
+              
             </Row>
           </Card.Header>
           {!Data && (
             <Alert variant="warning" className="mx-auto my-2 text-center">
               {" "}
-              <strong>No Products Added Yet</strong>{" "}
+              <strong>No Payments Added Yet</strong>{" "}
             </Alert>
           )}
           {Data && (
@@ -85,13 +87,15 @@ const UserTable = ({ users }) => {
                 <thead>
                   <tr>
                     <th className="text-center">#ID</th>
-                    <th>Name</th>
-                    <th className="text-center">Email</th>
+                    <th>Supplier Id</th>
+                    <th>Product</th>
+                    <th className="text-center">Amount</th>
+                    <th className="text-center">Status</th>
                     <th className="text-center">Actions</th>
                   </tr>
                 </thead>
 
-                {Data && <TableBody Data={users} />}
+                {Data && <TableBody Data={payments} />}
               </Table>
             </div>
           )}
@@ -101,4 +105,4 @@ const UserTable = ({ users }) => {
   );
 };
 
-export default UserTable;
+export default PaymentTable;

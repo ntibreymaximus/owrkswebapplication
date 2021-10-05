@@ -12,17 +12,17 @@ const ACTIONS = {
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.MAKE_REQUEST:
-      return { loading: true, transaction: [] };
+      return { loading: true, product: [] };
 
     case ACTIONS.GET_DATA:
-      return { ...state, loading: false, transaction: action.payload.transaction };
+      return { ...state, loading: false, product: action.payload.product };
 
     case ACTIONS.ERROR:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        transaction: [],
+        product: [],
       };
 
     default:
@@ -30,31 +30,31 @@ function reducer(state, action) {
   }
 }
 
-export default function useFetchTransactionByUserId(params) {
-  const [state, dispatch] = useReducer(reducer, { transaction: [], loading: true });
+export default function useFetchProductByUserId(params) {
+  const [state, dispatch] = useReducer(reducer, { product: [], loading: true });
 
   useEffect(() => {
-    //retrieving all the Transactions
-    let alltransactions = [];
+    //retrieving all the Products
+    let allproducts = [];
     dispatch({ type: ACTIONS.MAKE_REQUEST });
-    async function getAllTransactions() {
+    async function getAllProducts() {
     
         
       
-      const transactions = firestore.collection("transactions").where("userId","==",params);
+      const products = firestore.collection("products").where("userId","==",params);
    
-    await transactions.get().then((snapshot)=>{
-   console.log(snapshot)
+    await products.get().then((snapshot)=>{
+   
     if (snapshot.empty) {
-      throw "Transaction doesn't exist"
+      throw "Product doesn't exist"
     }
     snapshot.forEach((doc) => {
       //console.log(doc.data());
 
-      alltransactions.push(doc.data());
+      allproducts.push(doc.data());
       dispatch({
         type: ACTIONS.GET_DATA,
-        payload: { transaction: alltransactions },
+        payload: { product: allproducts },
       });
     }) 
   }).catch ((err)=>{
@@ -65,7 +65,7 @@ export default function useFetchTransactionByUserId(params) {
       })
   }
 
-    getAllTransactions();
+    getAllProducts();
   }, [params]);
 
   return state;

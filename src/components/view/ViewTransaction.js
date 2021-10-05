@@ -4,6 +4,7 @@ import { Divider } from "rsuite";
 import ViewModal from "../../modal/viewModal";
 import AddPaymentForm from "../helpers/Forms/createPaymentForm";
 import AddTransactionForm from "../helpers/Forms/createPaymentForm";
+import PaymentTable from "../helpers/Tables/PaymentTable";
 import TransactionTable from "../helpers/Tables/TransactionTable";
 import useFetchPaymentByTransactionId from "../Hooks/useFetchPaymentsByTransactionId";
 
@@ -20,7 +21,7 @@ const ViewTransaction = ({ data }) => {
 
   const results = (
     <>
-      <TransactionTable transactions={paymentData} />
+      <PaymentTable payments={paymentData} />
     </>)
   // useEffect(()=>{
 

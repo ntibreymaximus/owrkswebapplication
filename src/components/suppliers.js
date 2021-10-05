@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Col } from "react-bootstrap";
 import { Container, Button } from "rsuite";
 import AddModal from "../modal/addModal";
 import Dashboard from "./dashboard";
@@ -26,7 +27,10 @@ export default function Suppliers() {
   );
   return (
     <Container className="container">
-      <SideNavigation />
+      <Col md={3}>
+        <SideNavigation />
+      </Col>
+      <Col>
       <div className="navcontent">
         <div class="container-fluid searchoptions">
           <form class="d-flex">
@@ -52,6 +56,7 @@ export default function Suppliers() {
           <div className="results">{!myloading ? results : "Loading ..."}</div>
         </div>
       </div>
+      </Col>
     </Container>
   );
 }

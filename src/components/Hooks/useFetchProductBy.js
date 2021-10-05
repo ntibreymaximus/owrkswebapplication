@@ -1,4 +1,4 @@
-import { producteducer, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 
 //importing firebase and initializing db constant
 import { firestore } from "../../firebase";
@@ -12,17 +12,17 @@ const ACTIONS = {
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.MAKE_REQUEST:
-      return { loading: true, product: [] };
+      return { loading: true, user: [] };
 
     case ACTIONS.GET_DATA:
-      return { ...state, loading: false, product: action.payload.product };
+      return { ...state, loading: false, user: action.payload.user };
 
     case ACTIONS.ERROR:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        product: [],
+        user: [],
       };
 
     default:
@@ -30,29 +30,29 @@ function reducer(state, action) {
   }
 }
 
-export default function useFetchProductById(params) {
-  const [state, dispatch] = producteducer(reducer, { product: [], loading: true });
+export default function useFetchUserById(params) {
+  const [state, dispatch] = useReducer(reducer, { user: [], loading: true });
 
   useEffect(() => {
-    //retrieving all the products
-    let allproducts = [];
+    //retrieving all the users
+    let allusers = [];
     dispatch({ type: ACTIONS.MAKE_REQUEST });
-    async function getAllProducts() {
-      const products = firestore.collection("products").doc(params);
+    async function getAllUsers() {
+      const users = firestore.collection("users").doc(params);
 
-      await products.get().then((doc) => {
+      await users.get().then((doc) => {
         if (doc.exists) {
-          allproducts = doc.data();
+          allusers = doc.data();
           dispatch({
             type: ACTIONS.GET_DATA,
-            payload: { product: allproducts },
+            payload: { user: allusers },
           });
-          //console.log("product data: fetched", doc.data());
+          //console.log("user data: fetched", doc.data());
         } else {
           // doc.data() will be undefined in this case
           dispatch({
             type: ACTIONS.ERROR,
-            payload: { error: "product Doesn't Exist" },
+            payload: { error: "user Doesn't Exist" },
           });
           console.log("No such document!");
           return;
@@ -61,7 +61,7 @@ export default function useFetchProductById(params) {
     }
 
     console.log(params);
-    getAllProducts();
+    getAllUsers();
   }, [params]);
 
   return state;

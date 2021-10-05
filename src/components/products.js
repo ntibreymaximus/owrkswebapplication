@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import { Spinner } from "react-bootstrap";
+import { Spinner,Col } from "react-bootstrap";
 import { Container, Button } from "rsuite";
 import AddModal from "../modal/addModal";
 import AddProductForm from "./helpers/Forms/addProductForm";
@@ -7,6 +7,8 @@ import ProductTable from "./helpers/Tables/ProductTable";
 import useFetchProducts from "./Hooks/useFetchProducts";
 import SideNavigation from "./sidenavigation";
 import "../css/users.css";
+import ViewModal from "../modal/viewModal";
+
 export default function Transactions() {
   const [show, setShow] = useState(false);
 
@@ -31,7 +33,10 @@ export default function Transactions() {
   );
   return (
     <Container className="container">
-      <SideNavigation />
+      <Col md={3}>
+        <SideNavigation />
+      </Col>
+      <Col>
       <div className="navcontent">
         <div class="container-fluid searchoptions">
           <form class="d-flex">
@@ -45,14 +50,14 @@ export default function Transactions() {
             <Button className="addbutton" onClick={() => setShow(true)}>
               Add Product
             </Button>
-            <AddModal
+            <ViewModal
               title="Add Product"
               onClose={() => setShow(false)}
               show={show}
               button="Add Product"
             >
               <AddProductForm closeModal={closeModal} />
-            </AddModal>
+            </ViewModal>
             <Button className="deletebutton">Delete Product</Button>
           </form>
           <div className="results">
@@ -64,6 +69,7 @@ export default function Transactions() {
           </div>
         </div>
       </div>
+      </Col>
     </Container>
   );
 }

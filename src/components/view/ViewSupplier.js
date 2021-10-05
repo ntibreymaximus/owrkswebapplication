@@ -13,6 +13,7 @@ const ViewSupplier = ({ data }) => {
       <ListGroup>
         <ListGroup.Item>Supplier Name : {supplier.name}</ListGroup.Item>
         <ListGroup.Item>email : {supplier.email}</ListGroup.Item>
+        <ListGroup.Item>Company : {supplier.company}</ListGroup.Item>
       </ListGroup>
       <Divider />
       <div>

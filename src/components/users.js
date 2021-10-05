@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Spinner } from "react-bootstrap";
+import { Spinner,Col } from "react-bootstrap";
 import { Container, Button } from "rsuite";
 import "../css/users.css";
 import ViewModal from "../modal/viewModal";
@@ -27,7 +27,10 @@ export default function Users() {
   );
   return (
     <Container className="container">
-      <SideNavigation />
+      <Col md={3}>
+        <SideNavigation />
+      </Col>
+      <Col>
       <div className="navcontent">
         <div class="container-fluid searchoptions">
           <form class="d-flex">
@@ -59,6 +62,7 @@ export default function Users() {
           </div>
         </div>
       </div>
+      </Col>
     </Container>
   );
 }

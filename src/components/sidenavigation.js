@@ -47,13 +47,13 @@ export default function SideNavigation() {
             >
               <Nav.Item className="navitem">Transactions</Nav.Item>
             </NavLink>
-            <NavLink
+            {/* <NavLink
               to="/admin"
               activeClassName="navitemactive"
               className="navlink"
             >
               <Nav.Item className="navitem">Admin</Nav.Item>
-            </NavLink>
+            </NavLink> */}
             <NavLink to="/" activeClassName="navitemactive">
               <Button className="logoutbutton">Logout</Button>
             </NavLink>

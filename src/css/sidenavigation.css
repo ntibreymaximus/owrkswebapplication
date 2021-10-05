@@ -5,8 +5,8 @@
 .navcontent {
   width: 100% !important;
   margin-top: 2% !important;
-  margin-left: 25% !important;
-  padding: 5% !important;
+  /* margin-left: 25% !important; */
+  /* padding: 5% !important; */
 }
 .sidenavigation {
   height: 100% !important;

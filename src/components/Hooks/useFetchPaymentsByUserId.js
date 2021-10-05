@@ -12,17 +12,17 @@ const ACTIONS = {
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.MAKE_REQUEST:
-      return { loading: true, transaction: [] };
+      return { loading: true, payment: [] };
 
     case ACTIONS.GET_DATA:
-      return { ...state, loading: false, transaction: action.payload.transaction };
+      return { ...state, loading: false, payment: action.payload.payment };
 
     case ACTIONS.ERROR:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        transaction: [],
+        payment: [],
       };
 
     default:
@@ -30,31 +30,31 @@ function reducer(state, action) {
   }
 }
 
-export default function useFetchTransactionByUserId(params) {
-  const [state, dispatch] = useReducer(reducer, { transaction: [], loading: true });
+export default function useFetchPaymentByUserId(params) {
+  const [state, dispatch] = useReducer(reducer, { payment: [], loading: true });
 
   useEffect(() => {
-    //retrieving all the Transactions
-    let alltransactions = [];
+    //retrieving all the Payments
+    let allpayments = [];
     dispatch({ type: ACTIONS.MAKE_REQUEST });
-    async function getAllTransactions() {
+    async function getAllPayments() {
     
         
       
-      const transactions = firestore.collection("transactions").where("userId","==",params);
+      const payments = firestore.collection("payments").where("userId","==",params);
    
-    await transactions.get().then((snapshot)=>{
-   console.log(snapshot)
+    await payments.get().then((snapshot)=>{
+   
     if (snapshot.empty) {
-      throw "Transaction doesn't exist"
+      throw "Payment doesn't exist"
     }
     snapshot.forEach((doc) => {
       //console.log(doc.data());
 
-      alltransactions.push(doc.data());
+      allpayments.push(doc.data());
       dispatch({
         type: ACTIONS.GET_DATA,
-        payload: { transaction: alltransactions },
+        payload: { payment: allpayments },
       });
     }) 
   }).catch ((err)=>{
@@ -65,7 +65,7 @@ export default function useFetchTransactionByUserId(params) {
       })
   }
 
-    getAllTransactions();
+    getAllPayments();
   }, [params]);
 
   return state;
