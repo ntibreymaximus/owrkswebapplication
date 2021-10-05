@@ -49,13 +49,13 @@ export default function Transactions() {
             <Button className="addbutton" onClick={() => setShow(true)}>
               Add Transaction
             </Button>
-            <AddModal
+            {/* <AddModal
               title="Add Transaction"
               onClose={() => setShow(false)}
               show={show}
               onSubmit={<Dashboard />}
               button="Add Transaction"
-            ></AddModal>
+            ></AddModal> */}
             <Button className="deletebutton">Delete Transaction</Button>
           </form>
           <div className="results">
