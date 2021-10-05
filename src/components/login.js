@@ -62,7 +62,6 @@ export default function Login() {
             />
           </div>
           <div className="forminputcontainer">
-            <Link to="/dashboard/home"></Link>
             <button type="submit" disabled={loading} className="formbutton">
               Login
             </button>

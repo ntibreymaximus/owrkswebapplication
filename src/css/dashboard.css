@@ -5,6 +5,37 @@
   margin: 5% !important;
   color: #3eb54e !important;
 }
-.addbutton {
-  margin-left: 100px !important;
+
+.button {
+  background: #3eb54e !important;
+  border-radius: 0px;
+  border: none;
+  color: white !important;
+  text-align: center !important;
+  font-size: 12px !important;
+  font: 100px !important;
+  cursor: pointer !important;
+  margin-top: 30px !important;
+  margin-bottom: 10px !important;
+  font-family: "Montserrat" !important;
+  padding: 1em !important;
+}
+.card-body {
+  border: 20px solid white;
+  border-radius: 0px;
+}
+.card-title {
+  font-family: "Montserrat" !important;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #3eb54e;
+}
+
+.card-text {
+  font-family: "Montserrat" !important;
+  color: #3eb54e;
+}
+
+.dashboard {
+  padding-top: 50px;
 }

@@ -7,7 +7,6 @@ import SupplierTable from "./helpers/Tables/SupplierTable";
 import useFetchSupplier from "./Hooks/useFetchSupplier";
 import SideNavigation from "./sidenavigation";
 
-
 export default function Suppliers() {
   const [show, setShow] = useState(false);
   const [supplierData, setSuppplierData] = useState([]);
@@ -27,10 +26,7 @@ export default function Suppliers() {
   );
   return (
     <Container className="container">
-      <Col md={3}>
-        <SideNavigation />
-      </Col>
-      <Col>
+      <SideNavigation />
       <div className="navcontent">
         <div class="container-fluid searchoptions">
           <form class="d-flex">
@@ -56,7 +52,6 @@ export default function Suppliers() {
           <div className="results">{!myloading ? results : "Loading ..."}</div>
         </div>
       </div>
-      </Col>
     </Container>
   );
 }

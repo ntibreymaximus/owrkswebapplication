@@ -33,10 +33,8 @@ export default function Transactions() {
   );
   return (
     <Container className="container">
-      <Col md={3}>
-        <SideNavigation />
-      </Col>
-      <Col>      <div className="navcontent">
+      <SideNavigation />
+      <div className="navcontent">
         <div class="container-fluid searchoptions">
           <form class="d-flex">
             <input
@@ -67,7 +65,6 @@ export default function Transactions() {
           </div>
         </div>
       </div>
-      </Col>
     </Container>
   );
 }

@@ -7,7 +7,7 @@ export default function SideNavigation() {
     <Sidebar className="sidenavigation">
       <Sidenav>
         <Sidenav.Header className="sidebarheader">
-          <h3 className="sidebarheaderh3">Welcome to</h3>
+          <h3 className="sidebarheaderh3">WELCOME TO</h3>
           <h1 className="sidebarheaderh1">OWRKS</h1>
         </Sidenav.Header>
         <Sidenav.Body className="sidenavigationbody">
