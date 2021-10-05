@@ -68,7 +68,7 @@ export default function Dashboard() {
                 <div class="card-body">
                   <h1 class="card-title">{countData.TransactionCount}</h1>
                   <p class="card-text">COMPLETED TRANSACTIONS</p>
-                  <Link to="/suppliers" class="button">
+                  <Link to="/transactions" class="button">
                     VIEW TRANSACTIONS
                   </Link>
                 </div>
