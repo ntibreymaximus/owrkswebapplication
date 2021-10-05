@@ -34,7 +34,7 @@ export default function Dashboard (){
             {countData.ProductCount}<br/>
             {countData.SupplierCount}<br/>
             {countData.TransactionCount}<br/>
-            {countData.UserCount}<br/>
+            {countData.UserCount}<br/> {/*as Customers */}
             {countData.paymentCount}<br/>
             {countData.ProductCount}<br/>
 
