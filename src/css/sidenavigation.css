@@ -5,8 +5,8 @@
 .navcontent {
   width: 100% !important;
   margin-top: 2% !important;
-  /* margin-left: 25% !important; */
-  /* padding: 5% !important; */
+  margin-left: 25% !important;
+  padding: 5% !important;
 }
 .sidenavigation {
   height: 100% !important;
@@ -24,9 +24,9 @@
 }
 
 .sidebarheaderh3 {
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   margin-bottom: 0px !important;
-  letter-spacing: 3px !important;
+  letter-spacing: 1px !important;
 }
 
 .sidebarheaderh1 {
@@ -72,24 +72,24 @@
 .navitem:hover {
   color: #86f395c2 !important;
   border-left: 0.5em solid #86f395c2 !important;
+
 }
 
-.navitemactive .navitem {
+.navitemactive .navitem{
   background-color: white !important;
-  color: #1f5a27 !important;
-  border-left: 0.5em solid #3eb54e !important;
+  border-left: 0.5em solid #45c556 !important;
   width: 100% !important;
 }
-.navitem a:hover {
+.navitem a:hover{
   color: #86f395c2 !important;
 }
-.navitem a {
+.navitem a{
   color: white !important;
 }
 .navitemactive .navitem a {
-  color: #1f5a27 !important;
+  color: #45c556 !important;
 }
 
-a {
+a{
   text-decoration: none !important;
 }

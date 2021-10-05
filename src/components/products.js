@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import { Spinner,Col } from "react-bootstrap";
+import { Spinner, Col } from "react-bootstrap";
 import { Container, Button } from "rsuite";
 import AddModal from "../modal/addModal";
 import AddProductForm from "./helpers/Forms/addProductForm";
@@ -16,9 +16,9 @@ export default function Transactions() {
   const [myloading, setLoading] = useState(true);
   const [myerror, setError] = useState("");
 
-  const closeModal = () => {
-    setShow(false);
-  };
+  const closeModal =()=>{
+    setShow(false)
+  }
   const FetchProduct = async () => {
     const { products, loading, error } = await useFetchProducts();
     setLoading(loading);
@@ -33,15 +33,12 @@ export default function Transactions() {
   );
   return (
     <Container className="container">
-      <Col md={3}>
-        <SideNavigation />
-      </Col>
-      <Col>
+      <SideNavigation />
       <div className="navcontent">
         <div class="container-fluid searchoptions">
           <form class="d-flex">
             <input
-              className="searchforminput"
+              className="form-control searchforminput"
               type="search"
               placeholder="Search"
               aria-label="Search"
@@ -69,7 +66,6 @@ export default function Transactions() {
           </div>
         </div>
       </div>
-      </Col>
     </Container>
   );
 }

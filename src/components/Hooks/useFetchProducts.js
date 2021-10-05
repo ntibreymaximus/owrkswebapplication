@@ -31,10 +31,7 @@ function reducer(state, action) {
 }
 
 export default function useFetchProducts(params) {
-  const [state, dispatch] = useReducer(reducer, {
-    products: [],
-    loading: true,
-  });
+  const [state, dispatch] = useReducer(reducer, { products: [], loading: true });
 
   useEffect(() => {
     //retrieving all the products

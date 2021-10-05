@@ -3,6 +3,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
 
+
 const fbapp = firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -12,6 +13,8 @@ const fbapp = firebase.initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 });
+
+
 
 const storage = firebase.storage();
 
@@ -52,12 +55,10 @@ export const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 export const db = firebase.firestore();
 
 export const increment = firebase.firestore.FieldValue.increment(1);
-export const increaseBy = (value) =>
-  firebase.firestore.FieldValue.increment(value);
+export const increaseBy=(value)=> firebase.firestore.FieldValue.increment(value);
 export const decrement = firebase.firestore.FieldValue.increment(-1);
-export const decreaseBy = (value) =>
-  firebase.firestore.FieldValue.increment(-value);
-export const arrayAdd = firebase.firestore.FieldValue;
+export const decreaseBy=(value)=> firebase.firestore.FieldValue.increment(-(value));
+export const arrayAdd =firebase.firestore.FieldValue; 
 
 export const AddArrayField = (collection, field, NewId, destinationID) => {
   const mytable = firestore.collection(collection);

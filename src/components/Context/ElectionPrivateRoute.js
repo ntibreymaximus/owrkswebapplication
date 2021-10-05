@@ -9,7 +9,7 @@ const ElectionPrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
-        return currentElection && voter ? (
+        return (currentElection && voter) ? (
           <Component {...props} />
         ) : (
           <Redirect to="/election" />

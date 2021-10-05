@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Modal ,Button} from 'react-bootstrap';
 
 const ViewModal = ({ title, show, handleClose, children }) => {
   return (
@@ -29,5 +29,6 @@ const ViewModal = ({ title, show, handleClose, children }) => {
     </Modal>
   );
 };
+
 
 export default ViewModal;

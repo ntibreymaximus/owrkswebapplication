@@ -2,12 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../css/sidenavigation.css";
 import { Nav, Sidebar, Sidenav, Button } from "rsuite";
+
 export default function SideNavigation() {
   return (
     <Sidebar className="sidenavigation">
       <Sidenav>
         <Sidenav.Header className="sidebarheader">
-          <h3 className="sidebarheaderh3">Welcome to</h3>
+          <h3 className="sidebarheaderh3">WELCOME TO</h3>
           <h1 className="sidebarheaderh1">OWRKS</h1>
         </Sidenav.Header>
         <Sidenav.Body className="sidenavigationbody">

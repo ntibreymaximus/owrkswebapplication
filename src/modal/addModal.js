@@ -14,14 +14,18 @@ const AddModal = (props) => {
       // onClick={props.onSubmit}
     >
       {/* onClick={(e) => e.stopPropagation()} */}
-      <div className="modal-content">
+      <div className="modal-content" >
         <div className="modal-header">
           <h4 className="modal-title">{props.title}</h4>
         </div>
         <div className="modal-body">{props.children} </div>
         <div className="modal-footer">
-          <button className="addbutton">{props.button}</button>
-          <button className="cancelbutton">Cancel</button>
+          <button className="addbutton" >
+            {props.button}
+          </button>
+          <button className="cancelbutton" >
+            Cancel
+          </button>
         </div>
       </div>
     </div>

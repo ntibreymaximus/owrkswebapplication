@@ -39,28 +39,34 @@ export default function useFetchUserById(params) {
     dispatch({ type: ACTIONS.MAKE_REQUEST });
     async function getAllUsers() {
       const users = firestore.collection("users").doc(params);
-
+      
       await users.get().then((doc) => {
         if (doc.exists) {
-          allusers = doc.data();
+          allusers=doc.data();
           dispatch({
             type: ACTIONS.GET_DATA,
             payload: { user: allusers },
           });
-          //console.log("user data: fetched", doc.data());
+            //console.log("user data: fetched", doc.data());
         } else {
-          // doc.data() will be undefined in this case
-          dispatch({
-            type: ACTIONS.ERROR,
-            payload: { error: "user Doesn't Exist" },
-          });
-          console.log("No such document!");
-          return;
-        }
-      });
-    }
+            // doc.data() will be undefined in this case
+            dispatch({
+              type: ACTIONS.ERROR,
+              payload: { error: "user Doesn't Exist" },
+            });
+            console.log("No such document!");
+            return;
+          }
+    })
+    
+      
+   
 
-    console.log(params);
+    }
+      
+  
+    
+console.log(params);
     getAllUsers();
   }, [params]);
 
