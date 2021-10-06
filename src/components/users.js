@@ -27,14 +27,7 @@ export default function Users() {
   );
   return (
     <Container className="container">
-<<<<<<< HEAD
-      <SideNavigation />
-      <div className="navcontent">
-        <div class="container-fluid searchoptions">
-          <form class="d-flex">
-            <input
-              className="searchforminput"
-=======
+   
      <Col md={3}><SideNavigation/></Col>
      <Col>
        <div className="navcontent">
@@ -42,7 +35,6 @@ export default function Users() {
           <form class="d-flex">
             <input
               className="form-control searchforminput"
->>>>>>> parent of ead132c (formatting update)
               type="search"
               placeholder="Search"
               aria-label="Search"
@@ -51,7 +43,6 @@ export default function Users() {
             <Button className="addbutton" onClick={() => setShow(true)}>
               Add User
             </Button>
-<<<<<<< HEAD
             <ViewModal
               show={show}
               title="Add User"
@@ -70,18 +61,9 @@ export default function Users() {
           </div>
         </div>
       </div>
-=======
-            <ViewModal show={show} title="Add User" handleClose={()=>setShow(false)}>
-              <AddUserForm closeModal={()=>setShow(false)}/>
-            </ViewModal >
-           
-            <Button className="deletebutton">Delete User</Button>
-          </form>
-        </div>
-        <div>{!myloading ? results : <Spinner animation="border" variant="white"/>}</div>
-      </div>
+            
     </Col>
->>>>>>> parent of ead132c (formatting update)
+
     </Container>
   );
 }
