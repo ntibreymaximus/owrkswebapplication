@@ -81,12 +81,6 @@ async function AddTransaction(data,userID){
                         })
                         console.log(newCount)
 
-<<<<<<< HEAD
-      var newCount = (EC.data().TransactionCount || 44576) + 1;
-      // console.log(newCount)
-      var paymentidnum = (EC.data().paymentCount || 44576) + 1;
-      var paymentid = paymentidnum.toString()
-=======
                         transaction.update(users, {
                             myTransactionsCount: increment,
                             myTransactions: arrayAdd.arrayUnion(id),
@@ -103,7 +97,6 @@ async function AddTransaction(data,userID){
 
                     return code;
 
-<<<<<<< HEAD
       transaction.update(sfDocRef, { TransactionCount: newCount ,paymentCount:paymentidnum });
       transaction.set(transactionsRef.doc(id), {
         ...data,
