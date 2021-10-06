@@ -76,7 +76,7 @@ async function AddPayment(data, userID) {
         productId: product.data().id,
         supplier: supplier.data().name,
         supplierId: supplier.data().id,
-        amountPaid:parseFloat(data.amount),
+        amountPaid:parseFloat(data.amount).toFixed(2),
         costumerId:user.data().id,
         createdAt,
         id

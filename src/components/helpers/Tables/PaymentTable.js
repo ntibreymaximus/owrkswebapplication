@@ -22,7 +22,7 @@ const TableRow = ({ Data }) => {
       </td>
       <td className="text-center">{Data.product} </td>
       <td className="text-center">
-        {Data.quantity} 
+        {Data.amountPaid} 
       </td>
       <td className="text-center">
         <Badge bg="warning" text="dark" className="bg-warning">

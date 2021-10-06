@@ -12,17 +12,17 @@ const ACTIONS = {
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.MAKE_REQUEST:
-      return { loading: true, users: [] };
+      return { loading: true, suppliers: [] };
 
     case ACTIONS.GET_DATA:
-      return { ...state, loading: false, users: action.payload.users };
+      return { ...state, loading: false, suppliers: action.payload.suppliers };
 
     case ACTIONS.ERROR:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        users: [],
+        suppliers: [],
       };
 
     default:
@@ -31,30 +31,30 @@ function reducer(state, action) {
 }
 
 export default function useFetchSupplier(params) {
-  const [state, dispatch] = useReducer(reducer, { users: [], loading: true });
+  const [state, dispatch] = useReducer(reducer, { suppliers: [], loading: true });
 
   useEffect(() => {
-    //retrieving all the users
-    let allusers = [];
+    //retrieving all the suppliers
+    let allsuppliers = [];
     dispatch({ type: ACTIONS.MAKE_REQUEST });
-    async function getAllUsers() {
-      const users = firestore.collection("suppliers");
+    async function getAllSuppliers() {
+      const suppliers = firestore.collection("suppliers");
 
-      const snapshot = await users.get();
+      const snapshot = await suppliers.get();
       if (snapshot.empty) {
         return;
       }
 
       snapshot.forEach((doc) => {
-        allusers.push(doc.data());
+        allsuppliers.push(doc.data());
         dispatch({
           type: ACTIONS.GET_DATA,
-          payload: { users: allusers },
+          payload: { suppliers: allsuppliers },
         });
       });
     }
 
-    getAllUsers();
+    getAllSuppliers();
   }, [params]);
 
   return state;

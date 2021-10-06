@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-<<<<<<< HEAD
 import { Row, Col, Card, Table, Alert, Badge, Button } from "react-bootstrap";
 import { BsPlus } from "react-icons/bs";
 import { Link, useHistory, useParams } from "react-router-dom";
@@ -38,29 +37,6 @@ const TableRow = ({ Data }) => {
           Details
         </Button>
       </td>
-=======
-import { Row,Col, Card , Table, Alert, Badge ,Button} from 'react-bootstrap';
-import { BsPlus } from 'react-icons/bs';
-import { Link, useHistory, useParams } from 'react-router-dom';
-import { useAuth } from '../../Context/AuthContext';
-// import logo from '../../assets/img/logo.png'
-
-const TableRow =({Data})=> {
-
-    return (
-        <tr>
-        <td className="text-center text-muted">#{Data.id}</td>
-        <td>
-            
-                    {Data.firstname} {Data.lastname}
-                  
-        </td>
-        <td className="text-center">{Data.email} </td>
-        
-        <td className="text-center">
-            <Button as={Link} to={"/loadmanager/"+Data.id} type="button"  className="btn btn-primary btn-sm">View</Button>
-        </td>
->>>>>>> parent of ead132c (formatting update)
     </tr>
     );
   }

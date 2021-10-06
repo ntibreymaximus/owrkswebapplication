@@ -22,15 +22,16 @@ export default function Dashboard() {
 
   return (
     <Container className="container">
-
+      <Col sm={3}></Col>
       <SideNavigation />
+      <Col>
       <div className="navcontent">
         <div className="dashboard">
           <div class="row">
             <div class="col-sm-6">
               <div class="card text-center">
                 <div class="card-body">
-                  <h1 class="card-title">{countData.UserCount}</h1>
+                  <h1 class="card-title">{countData.UserCount - 45570}</h1>
                   <p class="card-text">ACTIVE CUSTOMERS</p>
                   <Link to="/customers" class="button">
                     VIEW CUSTOMERS
@@ -41,7 +42,7 @@ export default function Dashboard() {
             <div class="col-sm-6">
               <div class="card text-center">
                 <div class="card-body">
-                  <h1 class="card-title">{countData.SupplierCount}</h1>
+                  <h1 class="card-title">{countData.SupplierCount - 43578}</h1>
                   <p class="card-text">ACTIVE SUPPLIERS</p>
                   <Link to="/suppliers" class="button">
                     VIEW SUPPLIERS
@@ -55,7 +56,7 @@ export default function Dashboard() {
               <div class="col-sm-6">
                 <div class="card text-center">
                   <div class="card-body">
-                    <h1 class="card-title">{countData.ProductCount}</h1>
+                    <h1 class="card-title">{countData.ProductCount - 45578}</h1>
                     <p class="card-text">AVAILABLE PRODUCTS</p>
                     <Link to="/products" class="button">
                       VIEW PRODUCTS
@@ -66,7 +67,7 @@ export default function Dashboard() {
               <div class="col-sm-6">
                 <div class="card text-center">
                   <div class="card-body">
-                    <h1 class="card-title">{countData.TransactionCount}</h1>
+                    <h1 class="card-title">{countData.TransactionCount -44576}</h1>
                     <p class="card-text">COMPLETED TRANSACTIONS</p>
                     <Link to="/transactions" class="button">
                       VIEW TRANSACTIONS
@@ -80,6 +81,7 @@ export default function Dashboard() {
 
       </div>
       </div>
+      </Col>
     </Container>
   );
 }

@@ -9,66 +9,62 @@ const ACTIONS = {
   ERROR: "error",
 };
 
-function reducer(state, action) {
-  switch (action.type) {
-    case ACTIONS.MAKE_REQUEST:
-      return { loading: true, user: [] };
+// function reducer(state, action) {
+//   switch (action.type) {
+//     case ACTIONS.MAKE_REQUEST:
+//       return { loading: true, supplier: [] };
 
-    case ACTIONS.GET_DATA:
-      return { ...state, loading: false, user: action.payload.user };
+//     case ACTIONS.GET_DATA:
+//       return { ...state, loading: false, supplier: action.payload.supplier };
 
-    case ACTIONS.ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload.error,
-        user: [],
-      };
+//     case ACTIONS.ERROR:
+//       return {
+//         ...state,
+//         loading: false,
+//         error: action.payload.error,
+//         supplier: [],
+//       };
 
-    default:
-      return state;
-  }
-}
+//     default:
+//       return state;
+//   }
+// }
 
-export default function useFetchUserById(params) {
-  const [state, dispatch] = useReducer(reducer, { user: [], loading: true });
-
-  useEffect(() => {
-    //retrieving all the users
-    let allusers = [];
-    dispatch({ type: ACTIONS.MAKE_REQUEST });
-    async function getAllUsers() {
-      const users = firestore.collection("users").doc(params);
+export default async function FetchSupplierById(id,setSuppplierData,setError) {
+  let supplier = [];
+    let error = '';
+    //retrieving all the suppliers
+  
+    // dispatch({ type: ACTIONS.MAKE_REQUEST });
+      const suppliers = firestore.collection("suppliers").doc(id);
       
-      await users.get().then((doc) => {
+     await suppliers.get().then((doc) => {
         if (doc.exists) {
-          allusers=doc.data();
-          dispatch({
-            type: ACTIONS.GET_DATA,
-            payload: { user: allusers },
-          });
-            //console.log("user data: fetched", doc.data());
+          supplier.push(doc.data())
+
+          console.log(supplier)
+
+          setSuppplierData(supplier);
+          
         } else {
-            // doc.data() will be undefined in this case
-            dispatch({
-              type: ACTIONS.ERROR,
-              payload: { error: "user Doesn't Exist" },
-            });
+  
             console.log("No such document!");
-            return;
+            error = "supplier Doesn't Exist" ;
+            setError(error);
           }
+
     })
     
       
    
 
-    }
+    
       
   
     
-console.log(params);
-    getAllUsers();
-  }, [params]);
+// console.log(params);
+//    const [suppliers,error]= getAllSuppliers();
 
-  return state;
+  
+
 }

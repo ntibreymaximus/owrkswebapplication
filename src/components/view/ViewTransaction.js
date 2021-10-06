@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { ListGroup,Button } from "react-bootstrap";
 import { Divider } from "rsuite";
@@ -41,9 +40,9 @@ const ViewTransaction = ({ data }) => {
         <ListGroup.Item>Product : {transaction.product}</ListGroup.Item>
         <ListGroup.Item>Suplier : {transaction.quantity}</ListGroup.Item>
         <ListGroup.Item>Costumer : {transaction.userId}</ListGroup.Item>
-        <ListGroup.Item>Price : {transaction.price}</ListGroup.Item>
-        <ListGroup.Item>Payment : {transaction.amountPaid}</ListGroup.Item>
-        <ListGroup.Item>Balance : {transaction.balance}</ListGroup.Item>
+        <ListGroup.Item>Price : {parseFloat(transaction.price).toFixed(2)}</ListGroup.Item>
+        <ListGroup.Item>Payment : {parseFloat(transaction.amountPaid).toFixed(2)}</ListGroup.Item>
+        <ListGroup.Item>Balance : {parseFloat(transaction.balance).toFixed(2)}</ListGroup.Item>
       </ListGroup>
       <Divider />
       <div>
@@ -59,40 +58,5 @@ const ViewTransaction = ({ data }) => {
     </div>
   );
 };
-=======
-import React, { useState, useEffect } from 'react';
-import { ListGroup } from 'react-bootstrap';
-import { Divider } from 'rsuite';
-import AddTransactionForm from '../helpers/Forms/createTransactionForm';
-
-
-
-
-const ViewTransaction =({data})=>{
-    const [transaction,setTransaction]=useState(data)
-    
-    // useEffect(()=>{
-
-
-
-    // },[])
-    return (
-        <div>
-            <ListGroup>
-                <ListGroup.Item>Transaction Name : {transaction.name}</ListGroup.Item>
-                <ListGroup.Item>email : {transaction.email}</ListGroup.Item>                
-            </ListGroup>
-            <Divider/>
-            <div>
-                <h3>Products</h3>
-                {/* <AddTransactionForm /> */}
-
-            </div>
-
-        </div>
-    )
-
-}
->>>>>>> parent of ead132c (formatting update)
 
 export default ViewTransaction;

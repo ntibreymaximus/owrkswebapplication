@@ -8,7 +8,7 @@ import { useAuth } from '../../Context/AuthContext';
 import { firestore, storageRef } from '../../../firebase';
 
 // import AddProduct from '../../Hooks/useAddProducts';
-import AddUser from '../../Hooks/useAddUsere';
+import AddUser from '../../Hooks/useAddUser';
  import style from 'bootstrap/dist/css/bootstrap.min.css';
 
 //visible header that contains LOGO and Navigation Icon
@@ -24,7 +24,6 @@ const AddUserForm =({closeModal})=>{
   
   const [error, setError] = useState(''); // sets Error from operations
   const [formError, setFormError] = useState([]); // check error from forms
-<<<<<<< HEAD
   const [success, setSuccess] = useState(false);
   const { userID } = useAuth();
 
@@ -125,7 +124,7 @@ const AddUserForm =({closeModal})=>{
         </Form.Group>
         <Form.Group className="row" controlId="validationCustom01">
           <Form.Label className="col-3 align-bottom text-end mx-auto">
-            User Email
+            Costumer Email
           </Form.Label>
           <InputGroup className="form-input col">
             <Form.Control
@@ -215,160 +214,15 @@ const AddUserForm =({closeModal})=>{
           </Button>
         </Col>
       </Form>
-=======
-  const [success,setSuccess]=useState(false)
-  const { userID } = useAuth()
-
-
-  const UpdateData =(item,value)=>{
-    setData(data => ({...data, [item]:value}))
-    setFormError(formError => ({...formError, [item]:''}))
-  }
-  
-
-    const eventHandler = (event) => {
-        let val = event.target.value;
-        let nam = event.target.name;
-        UpdateData(nam,val)
-    };
-
-
-    const findFormErrors = () => {
-        const newErrors = {}
-        // name errors
-        if ( !data.name || data.name === '' ) newErrors.name = 'Cannot be blank!'
-        else if ( data.name.length > 100 ) newErrors.name = 'Name is too long!'
-        // food errors
-        // if ( !data.email || data.email === '' ) newErrors.startDate = 'Add a valid email!'
-    
-        
-
-        return newErrors;
-    }
-
-    
-    const Submit = async ()=>{ 
-        // Add Product
-        const {error,success} = await AddUser(data,userID);
-        
-        setMainError(error);
-        setSuccess(success);
-        setData({name:'',email:''});
-        setLoading(false)
-        // closeModal()
-
-   }
-
-     
-    
-    const Proceed = async () => {
-        // event.preventDefault();
-    
-        const newErrors = findFormErrors()
-            // Conditional logic:
-        if ( Object.keys(newErrors).length > 0 ) {
-            // We got errors!
-            setFormError(newErrors)
-            } else {
-            // No errors! Put any logic here for the form submission!
-            setLoading(true)
-                // uploadImage();
-                Submit();
-                // continue with other rendering
-            }
-        
-    };
-
-    const output = <div className={style}>
-           <Form noValidate validated={validated} onSubmit={Proceed} inline>
-
-                {/* election TITLE */}
-                <Form.Group className="row" controlId="validationCustom01">
-                    <Form.Label className="col-3 align-bottom text-end mx-auto">
-                    First Name
-                    </Form.Label>
-                    <InputGroup className="form-input col">
-
-                    <Form.Control
-                    className=""
-                    type="text"
-                    name="firstname"
-                    required ={true}
-                    value={data.firstname}
-                    onChange={eventHandler}
-                    isInvalid={ !!formError.firstname }
-                    />
-                    <Form.Control.Feedback type="invalid">
-                {formError.name}
-                </Form.Control.Feedback>
-                </InputGroup>
-                </Form.Group> 
-                <Form.Group className="row" controlId="validationCustom01">
-                    <Form.Label className="col-3 align-bottom text-end mx-auto">
-                    Last Name
-                    </Form.Label>
-                    <InputGroup className="form-input col">
-
-                    <Form.Control
-                    className=""
-                    type="text"
-                    name="lastname"
-                    required ={true}
-                    value={data.lastname}
-                    onChange={eventHandler}
-                    isInvalid={ !!formError.lastname }
-                    />
-                    <Form.Control.Feedback type="invalid">
-                {formError.name}
-                </Form.Control.Feedback>
-                </InputGroup>
-                </Form.Group> 
-
-                {/* election TITLE */}
-                <Form.Group className="row" controlId="validationCustom01">
-                    <Form.Label className="col-3 align-bottom text-end mx-auto">
-                    User Email
-                    </Form.Label>
-                    <InputGroup className="form-input col">
-
-                    <Form.Control
-                    className=""
-                    type="email"
-                    name="email"
-                    required ={true}
-                    value={data.email}
-                    onChange={eventHandler}
-                    isInvalid={ !!formError.email }
-                    />
-                    <Form.Control.Feedback type="invalid">
-                {formError.email}
-                </Form.Control.Feedback>
-                </InputGroup>
-                </Form.Group>
-
-                
-
-
-                <Col className="text-center">
-                    <Button
-                    onClick={()=>Proceed()}
-                    className=" btn-success text-center"
-                    >
-                    Proceed {(loading && !error)   &&  <Spinner animation="border" variant="white"/> }
-                    </Button>
-
-                </Col>
-                </Form>
-
->>>>>>> parent of ead132c (formatting update)
     </div>
+    )
 
     return(
         <>
         {(error ) && <Alert variant="danger"><h3 className="text-muted mx-auto">{error}</h3></Alert>}
             
-            {success && <Alert variant="success"><h3 className="mx-auto">{"User added Succesfuly"}</h3></Alert> }
-            {success && <Alert variant="success"><h3 className="mx-auto">New User ID : {success}</h3></Alert>}
+            {success && <Alert variant="success"><h3 className="mx-auto">{"Costumer added Succesfuly"}</h3></Alert> }
+            {success && <Alert variant="success"><h3 className="mx-auto">New Costumer ID : {success}</h3></Alert>}
             {(!error && !success)   &&  output }
 
             

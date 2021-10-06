@@ -2,8 +2,14 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../css/sidenavigation.css";
 import { Nav, Sidebar, Sidenav, Button } from "rsuite";
-
+import { useAuth } from "./Context/AuthContext";
+import auth from "../firebase";
 export default function SideNavigation() {
+
+  const logout = () => {
+    return auth.signOut();
+  };  
+
   return (
     <Sidebar className="sidenavigation">
       <Sidenav>
@@ -55,9 +61,9 @@ export default function SideNavigation() {
             >
               <Nav.Item className="navitem">Admin</Nav.Item>
             </NavLink> */}
-            <NavLink to="/" activeClassName="navitemactive">
-              <Button className="logoutbutton">Logout</Button>
-            </NavLink>
+            {/* <NavLink as={Button}  onClick={()=>logout()}> */}
+              <Button  onClick={()=>logout()} className=" logoutbutton">Logout</Button>
+            {/* </NavLink> */}
           </Nav>
         </Sidenav.Body>
       </Sidenav>

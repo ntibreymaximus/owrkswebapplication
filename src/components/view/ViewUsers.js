@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { ListGroup, Tab,Tabs,Dropdown } from "react-bootstrap";
 import Paymentresults from "../helpers/MiniComponents/Payments";
@@ -98,38 +97,5 @@ const ViewUser = ({ data }) => {
     </div>
   );
 };
-=======
-import React, { useState, useEffect } from 'react';
-import { ListGroup } from 'react-bootstrap';
-import { Divider } from 'rsuite';
-
-
-
-
-const ViewUser =({data})=>{
-    const [user,setUser]=useState(data)
-    
-    // useEffect(()=>{
-
-
-
-    // },[])
-    return (
-        <div>
-            <ListGroup>
-                <ListGroup.Item>User Name : {user.name}</ListGroup.Item>
-                <ListGroup.Item>email : {user.email}</ListGroup.Item>                
-            </ListGroup>
-            <Divider/>
-            <div>
-                <h3>Settings</h3>
-                <h3>Change Password</h3>
-            </div>
-
-        </div>
-    )
-
-}
->>>>>>> parent of ead132c (formatting update)
 
 export default ViewUser;
