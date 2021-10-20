@@ -62,26 +62,33 @@ const ViewUser = ({ data }) => {
       setPaError(error);
     };
 
-  // useEffect(()=>{
-  //   const loadExtra= ()=>{
-  //     FetchProduct(data.id);
-    
-  //   FetchPayment(data.id);
-  
-  //    FetchTransaction(data.id);
-
-  //   }
-    
-  //   loadExtra()
-  // },[])
 
   return (
     <div>
-      <ListGroup>
-        <ListGroup.Item>Customer Name : {user.name}</ListGroup.Item>
-        <ListGroup.Item>email : {user.email}</ListGroup.Item>
-        <ListGroup.Item>company : {user.company}</ListGroup.Item>
-      </ListGroup>
+      <Tabs defaultActiveKey="UserInfo" id="uncontrolled-tab-example" className="mb-3">
+       
+       <Tab eventKey="UserInfo" title="User details">
+        <ListGroup>
+          <ListGroup.Item>Customer Name : {user.firstname} {user.lastname}</ListGroup.Item>
+          <ListGroup.Item>email : {user.email}</ListGroup.Item>
+          <ListGroup.Item>company : {user.company}</ListGroup.Item>
+          <ListGroup.Item>Bussiness Id : {user.bussinessID}</ListGroup.Item>
+          <ListGroup.Item>ID Type : {user.Idtype}</ListGroup.Item>
+          <ListGroup.Item>ID number : {user.idnumber}</ListGroup.Item>
+          <ListGroup.Item>Address : {user.address}</ListGroup.Item>
+        </ListGroup>
+       </Tab>
+       <Tab eventKey="GInfo" title="Guarantor Info" >
+        <ListGroup>
+          <ListGroup.Item>Guarantor Name : {user.gfirstname} {user.lastname}</ListGroup.Item>
+          <ListGroup.Item>Guarantor email : {user.gemail}</ListGroup.Item>
+          <ListGroup.Item>ID Type : {user.gIdtype}</ListGroup.Item>
+          <ListGroup.Item>ID number : {user.gId}</ListGroup.Item>
+          <ListGroup.Item>Guarantor Address : {user.gaddress}</ListGroup.Item>
+        </ListGroup>       
+        </Tab>
+     </Tabs>
+     
       <Dropdown.Divider />
       <h5>Products</h5>
       <Tabs defaultActiveKey="transactions" id="uncontrolled-tab-example" className="mb-3">

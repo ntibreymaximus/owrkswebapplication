@@ -93,7 +93,7 @@ const AddSupplierForm =({closeModal})=>{
                 {/* election TITLE */}
                 <Form.Group className="row" controlId="validationCustom01">
                     <Form.Label className="col-3 align-bottom text-end mx-auto">
-                    Company Name
+                    Company or Venture Name
                     </Form.Label>
                     <InputGroup className="form-input col">
 
@@ -133,9 +133,44 @@ const AddSupplierForm =({closeModal})=>{
                 </Form.Control.Feedback>
                 </InputGroup>
                 </Form.Group>
-
-                
-
+                    <Form.Group className="row" controlId="validationCustom01">
+                    <Form.Label className="col-3 align-bottom text-end mx-auto">
+                        Bussiness Registration ID
+                    </Form.Label>
+                    <InputGroup className="form-input col">
+                        <Form.Control
+                        className=""
+                        type="text"
+                        name="bussinessID"
+                        required={true}
+                        value={data.bussinessId}
+                        onChange={eventHandler}
+                        isInvalid={!!formError.bussinessId}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                        {formError.bussinessId}
+                        </Form.Control.Feedback>
+                    </InputGroup>
+                    </Form.Group>
+                    <Form.Group className="row" controlId="validationCustom01">
+                    <Form.Label className="col-3 align-bottom text-end mx-auto">
+                        Company Address
+                    </Form.Label>
+                    <InputGroup className="form-input col">
+                        <Form.Control
+                        className=""
+                        type="text"
+                        name="address"
+                        required={true}
+                        value={data.address}
+                        onChange={eventHandler}
+                        isInvalid={!!formError.address}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                        {formError.address}
+                        </Form.Control.Feedback>
+                    </InputGroup>
+                    </Form.Group>
 
                 <Col className="text-center">
                     <Button

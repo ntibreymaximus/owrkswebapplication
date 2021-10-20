@@ -22,6 +22,7 @@ export default function Transactions() {
 
   const closeModal =()=>{
     setShow(false)
+    FetchProduct()
   }
   const FetchProduct = async () => {
     const { products, loading, error } = await useFetchProducts();
@@ -69,7 +70,8 @@ export default function Transactions() {
       });
     }
   }
-  async function  DoSearch (){
+  async function  DoSearch (e){
+    e.preventDefault()
     setMError("")
     await Search()
   }
@@ -88,7 +90,7 @@ export default function Transactions() {
       <Col>
       <div className="navcontent">
         <div class="container-fluid searchoptions">
-          <form class="d-flex">
+        <form class="d-flex" onSubmit={(e)=>DoSearch(e)}>
             <input
               className="form-control searchforminput"
               type="search by Product ID"
@@ -97,19 +99,19 @@ export default function Transactions() {
               ref={searchRef}
 
             />
-                <Button className="searchbutton" onClick={()=>DoSearch()}>Search</Button>
+            <Button className="searchbutton" onClick={(e)=>DoSearch(e)}>Search</Button>
             <Button className="addbutton" onClick={() => setShow(true)}>
               Add Product
             </Button>
             <ViewModal
               title="Add Product"
-              handleClose={() => setShow(false)}
+              handleClose={closeModal}
               show={show}
               button="Add Product"
             >
               <AddProductForm closeModal={closeModal} />
             </ViewModal>
-            <Button className="deletebutton">Delete Product</Button>
+            {/* <Button className="deletebutton">Delete Product</Button> */}
           </form>
           <div className="results">
           {myerror ? <Alert variant="danger">{myerror}</Alert>:

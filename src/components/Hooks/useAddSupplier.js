@@ -19,14 +19,14 @@ async function AddSupplier(data,userID){
      
         var sfDocRef = firestore.collection("PC").doc("--Counter--");
         const supplier = firestore.collection('suppliers')
-        const users = firestore.collection('users').doc(userID);
+        const users = firestore.collection('admin').doc(userID);
      
         await firestore.runTransaction(async (transaction) => {
             var ilect =  await transaction.get(users);
             var EC =  await transaction.get(sfDocRef);
             
               if(!ilect.exists){   
-                        throw "User does not exist!";
+                        throw "Admin does not exist!";
                     }
                
                 // if (ilect.data().pro || newSupplierCount <= 3) {

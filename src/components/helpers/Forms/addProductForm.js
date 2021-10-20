@@ -134,6 +134,27 @@ const AddProductForm =({closeModal})=>{
 
                 <Form.Group className="row" controlId="validationCustom01">
                     <Form.Label className="col-3 align-bottom text-end mx-auto">
+                    Price/unit
+                    </Form.Label>
+                    <InputGroup className="form-input col">
+
+                    <Form.Control
+                    className=""
+                    type="number"
+                    name="unitPrice"
+                    required ={true}
+                    value={data.unitPrice}
+                    onChange={eventHandler}
+                    isInvalid={ !!formError.unitPrice }
+                    />
+                    <Form.Control.Feedback type="invalid">
+                {formError.unitPrice}
+                </Form.Control.Feedback>
+                </InputGroup>
+                </Form.Group>
+
+                <Form.Group className="row" controlId="validationCustom01">
+                    <Form.Label className="col-3 align-bottom text-end mx-auto">
                     Supplier ID
                     </Form.Label>
                     <InputGroup className="form-input col">

@@ -18,18 +18,9 @@ const TableRow =({Data})=> {
         <tr>
         <td className="text-center text-muted">#{Data.id}</td>
         <td>
-            <div className="widget-content p-0">
-                <div className="widget-content-wrapper">
-                    <div className="widget-content-left mr-3">
-                        <div className="widget-content-left">
-                            <img width="40" className="rounded-circle" src={Data.img} alt="Avatar"/>
-                        </div>
-                    </div>
-                    <div className="widget-content-left flex2">
-                        <div className="widget-heading">{Data.name}</div>
-                    </div>
-                </div>
-            </div>
+            {Data.name}
+                   
+                
         </td>
         <td className="text-center">{Data.supplier} </td>
         <td className="text-center">{Data.quantity} /{Data.inStock}</td>

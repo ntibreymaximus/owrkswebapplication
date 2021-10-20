@@ -23,6 +23,7 @@ export default function Transactions() {
 
   const closeModal =()=>{
     setShow(false)
+    FetchTransaction()
   }
   
   const FetchTransaction = async () => {
@@ -43,11 +44,7 @@ export default function Transactions() {
       console.log("do nothing here")
       return;
     }else{
-    setLoading(true);
-
-
-    
-      
+    setLoading(true);    
       const users = firestore.collection("transactions").where('id','==',searchRef.current.value.toString());
 
       const snapshot = await users.get();
@@ -71,7 +68,8 @@ export default function Transactions() {
       });
     }
   }
-  async function  DoSearch (){
+  async function  DoSearch (e){
+    e.preventDefault()
     setMError("")
     await Search()
   }
@@ -88,7 +86,7 @@ export default function Transactions() {
       <Col >
         <div className="navcontent">
             <div class="container-fluid searchoptions">
-              <form class="d-flex">
+            <form class="d-flex" onSubmit={(e)=>DoSearch(e)}>
                 <input
                   className="form-control searchforminput"
                   type="search"
@@ -97,18 +95,18 @@ export default function Transactions() {
                   ref={searchRef}
 
                 />
-                <Button className="searchbutton" onClick={()=>DoSearch()}>Search</Button>
-                <Button className="addbutton" onClick={() => setShow(true)}>
+            <Button className="searchbutton" onClick={(e)=>DoSearch(e)}>Search</Button>
+                {/* <Button className="addbutton" onClick={() => setShow(true)}>
                   Add Transaction
-                </Button>
+                </Button> */}
                 <ViewModal
                   title="Add Transaction"
-                  handleClose={() => setShow(false)}
+                  handleClose={() => closeModal()}
                   show={show}
                   // onSubmit={<Dashboard />}
                   button="Add Transaction"
                 ></ViewModal>
-                <Button className="deletebutton">Delete Transaction</Button>
+                {/* <Button className="deletebutton">Delete Transaction</Button> */}
               </form>
             </div>
             <div>

@@ -139,7 +139,7 @@ const AddTransactionForm =({closeModal,product})=>{
         {/* election TITLE */}
         <Form.Group className="row" controlId="validationCustom01">
           <Form.Label className="col-3 align-bottom text-end mx-auto">
-            User ID
+            Costumer ID
           </Form.Label>
           <InputGroup className="form-input col">
             <Form.Control
@@ -197,6 +197,11 @@ const AddTransactionForm =({closeModal,product})=>{
             </Form.Control.Feedback>
           </InputGroup>
         </Form.Group>
+        <hr/>
+        <p>
+          Cost = <strong>{parseFloat((data.quantity||0) * product.unitPrice).toFixed(2)}</strong>
+        </p>
+        <hr/>
         <Form.Group className="row" controlId="validationCustom01">
           <Form.Label className="col-3 align-bottom text-end mx-auto">
             Innitial Deposit

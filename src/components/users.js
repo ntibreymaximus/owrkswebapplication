@@ -19,7 +19,11 @@ export default function Users() {
   const [myerror, setMError] = useState("");
   const searchRef = useRef();
 
+  const closeModal =async()=>{
+    setShow(false)
+    await DoSearch()
 
+  }
 
   const FetchUsers = async () => {
     const { users, loading, error } = await useFetchUsers();
@@ -48,9 +52,9 @@ export default function Users() {
 
       const snapshot = await users.get();
       if (snapshot.empty) {
-        setMError("Supplier Not Found")
+        setMError("Customer Not Found")
         setSearchData()
-        console.log("Supplier Not Found")
+        console.log("Customer Not Found")
         setLoading(false);
 
         return
@@ -67,7 +71,10 @@ export default function Users() {
       });
     }
   }
-  async function  DoSearch (){
+  async function  DoSearch (e){
+    if(e){
+    e.preventDefault()
+    }
     setMError("")
     await Search()
   }
@@ -86,7 +93,7 @@ export default function Users() {
      <Col>
        <div className="navcontent">
         <div class="container-fluid searchoptions">
-          <form class="d-flex">
+          <form class="d-flex" onSubmit={(e)=>DoSearch(e)}>
             <input
               className="form-control searchforminput"
               type="search"
@@ -95,18 +102,18 @@ export default function Users() {
               ref={searchRef}
 
             />
-            <Button className="searchbutton" onClick={()=>DoSearch()}>Search</Button>
+            <Button className="searchbutton" onClick={(e)=>DoSearch(e)}>Search</Button>
             <Button className="addbutton" onClick={() => setShow(true)}>
               Add Costumer
             </Button>
             <ViewModal
               show={show}
               title="Add Costumer"
-              handleClose={() => setShow(false)}
+              handleClose={() => closeModal()}
             >
-              <AddUserForm closeModal={() => setShow(false)} />
+              <AddUserForm closeModal={() => closeModal()} />
             </ViewModal>
-            <Button className="deletebutton">Delete Costumer</Button>
+            {/* <Button className="deletebutton">Delete Costumer</Button> */}
           </form>
           <div className="results">
           {myerror ? <Alert variant="danger">{myerror}</Alert>:

@@ -24,6 +24,8 @@ export default function Suppliers() {
 
   const closeModal =()=>{
     setShow(false)
+  FecthData();
+
   }
   
   const FetchSupplier = async () => {
@@ -92,7 +94,8 @@ export default function Suppliers() {
 
   // ,[])
 
- async function  DoSearchSupplier (){
+  async function  DoSearch (e){
+    e.preventDefault()
     setMError("")
     await SearchSupplier()
   }
@@ -107,7 +110,7 @@ export default function Suppliers() {
       <Col>
         <div className="navcontent">
           <div class="container-fluid searchoptions">
-            <form class="d-flex">
+          <form class="d-flex" onSubmit={(e)=>DoSearch(e)}>
               <input
                 className="form-control searchforminput"
                 type="search"
@@ -116,7 +119,7 @@ export default function Suppliers() {
               ref={searchRef}
 
               />
-              <Button className="searchbutton" onClick={()=>DoSearchSupplier()}>Search</Button>
+            <Button className="searchbutton" onClick={(e)=>DoSearch(e)}>Search</Button>
               <Button className="addbutton" onClick={() => setShow(true)}>
                 Add Supplier
               </Button>
@@ -129,7 +132,7 @@ export default function Suppliers() {
               >
                 <AddSupplierForm closeModal={closeModal}  />
               </ViewModal>
-              <Button className="deletebutton">Delete Supplier</Button>
+              {/* <Button className="deletebutton">Delete Supplier</Button> */}
             </form>
           </div>
           

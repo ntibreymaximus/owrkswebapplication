@@ -43,6 +43,7 @@ async function AddProduct(data,userID){
                             supplier : suppliers.data().name,
                             quantity: parseInt(data.quantity),
                             inStock:parseInt(data.quantity),
+                            unitPrice:parseFloat(data.unitPrice).toFixed(2),
                             transaction:[],
                             createdBy:userID,
                             createdAt,

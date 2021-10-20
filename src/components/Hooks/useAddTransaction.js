@@ -1,5 +1,5 @@
 import React ,{ useState ,useEffect} from "react";
-import {arrayAdd, decreaseBy, firestore,increment,timestamp} from '../../firebase';
+import {arrayAdd, decreaseBy, firestore,increaseBy,increment,timestamp} from '../../firebase';
 import { useAuth } from "../Context/AuthContext";
 // import { useAuth } from "../../../contexts/AuthContext";
 import Hashids from 'hashids'
@@ -21,7 +21,7 @@ import Hashids from 'hashids'
         const createdAt = timestamp();
      
         var sfDocRef = firestore.collection("PC").doc("--Counter--");
-        const transactionsRef = firestore.collection('transaction')
+        const transactionsRef = firestore.collection('transactions')
         const admins = firestore.collection('admin').doc(userID);
         const users = firestore.collection('users').doc(data.userId.toString());
         const suppliers = firestore.collection('suppliers').doc(data.supplierId.toString());
@@ -56,10 +56,13 @@ import Hashids from 'hashids'
       // console.log(newCount)
       var paymentidnum = (EC.data().paymentCount || 44576) + 1;
       var paymentid = paymentidnum.toString()
+      var transactionId = newCount.toString()
+      id = newCount;
+      code = newCount;
 
 
       transaction.update(sfDocRef, { TransactionCount: newCount ,paymentCount:paymentidnum });
-      transaction.set(transactionsRef.doc(id), {
+      transaction.set(transactionsRef.doc(transactionId), {
         ...data,
         product: product.data().name,
         productId: product.data().id,
@@ -84,6 +87,13 @@ import Hashids from 'hashids'
         createdAt,
         id:paymentid
        
+      });
+      transaction.update(products, {
+     
+        transaction:arrayAdd.arrayUnion(id),
+        inStock :decreaseBy(data.quantity),
+        transactionsCount : increment,
+        lastUpdatedAt: createdAt,
       });
       return code;
       

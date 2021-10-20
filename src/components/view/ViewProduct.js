@@ -2,7 +2,7 @@ import React, { useState,  } from "react";
 import { ListGroup, Button } from "react-bootstrap";
 import { Divider } from "rsuite";
 import ViewModal from "../../modal/viewModal";
-import AddTransactionForm from "../helpers/Forms/createPaymentForm";
+import AddTransactionForm from "../helpers/Forms/createTransactionForm";
 import TransactionTable from "../helpers/Tables/TransactionTable";
 import useFetchTransactionByProductId from "../Hooks/useFetchTransactionsByProductId";
 
@@ -38,7 +38,8 @@ const ViewProduct = ({ data }) => {
         <ListGroup.Item>Quantity : {product.quantity}</ListGroup.Item>
         <ListGroup.Item>In stock : {product.inStock}</ListGroup.Item>
         <ListGroup.Item>Supplier : {product.supplier}</ListGroup.Item>
-        <ListGroup.Item>State : {product.leaseState}</ListGroup.Item>
+        <ListGroup.Item>State : {product.leaseState ? "Lease" : "Pay"}</ListGroup.Item>
+        <ListGroup.Item>Price/Unit : {product.unitPrice}</ListGroup.Item>
       </ListGroup>
       <Divider />
       <div>

@@ -33,9 +33,9 @@ const {login} = useAuth()
   }
 
   return (
-    <div className="login">
+    <div className="login ">
       <h1 className="login-header">OWRKS</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="mx-auto mx-md-5" onSubmit={handleSubmit}>
         <h2 className="loginform-header">Admin Login</h2>
         <div className="alert-danger">{error && error}</div>
         <div className="form-group">
