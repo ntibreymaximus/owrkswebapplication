@@ -1,5 +1,5 @@
-import React, { useRef,useState } from "react";
-import { Spinner, Col ,Alert} from "react-bootstrap";
+import React, { useRef, useState } from "react";
+import { Spinner, Col, Alert } from "react-bootstrap";
 import { Container, Button } from "rsuite";
 import "../css/users.css";
 import { firestore } from "../firebase";
@@ -33,22 +33,20 @@ export default function Users() {
   };
 
   const Search = async () => {
- 
     let data = [];
     let allusers = [];
-    let error = '';
+    let error = "";
 
-    if(searchRef.current.value.toString() === ''){
+    if (searchRef.current.value.toString() === "") {
       // setSearchData()
-      console.log("do nothing here")
+      console.log("do nothing here");
       return;
-    }else{
-    setLoading(true);
+    } else {
+      setLoading(true);
 
-
-    
-      
-      const users = firestore.collection("users").where('id','==',searchRef.current.value.toString());
+      const users = firestore
+        .collection("users")
+        .where("id", "==", searchRef.current.value.toString());
 
       const snapshot = await users.get();
       if (snapshot.empty) {
@@ -57,17 +55,15 @@ export default function Users() {
         console.log("Customer Not Found")
         setLoading(false);
 
-        return
+        return;
       }
 
       snapshot.forEach((doc) => {
         allusers.push(doc.data());
-        setSearchData(allusers)
-        setMError("")
+        setSearchData(allusers);
+        setMError("");
         setLoading(false);
-        return
-
-
+        return;
       });
     }
   }
@@ -120,11 +116,9 @@ export default function Users() {
                       <div>{(!myloading && !loading ) ? results : <Spinner animation="border" variant="white"/>}</div>
                       }
           </div>
+          </div>
         </div>
-      </div>
-            
-    </Col>
-
+        </Col>
     </Container>
   );
 }
